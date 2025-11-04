@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Get the commit message (first argument is the file containing the message)
+MSG_FILE=$1
+MSG=$(cat $MSG_FILE)
+
+# Define regex pattern for commit message format
+# Format: <type>(<scope>): <subject>
+# Allowed types are defined in the README.md
+PATTERN="^(feat|fix|docs|style|refactor|perf|test|chore|ci|build|revert)(\([a-z0-9-]+\))?: .+"
+
+if ! [[ $MSG =~ $PATTERN ]]; then
+  echo "❌ Invalid commit message format."
+  echo "The commit message must match format: <type>(<scope>): <subject>"
+  echo "Allowed types: feat, fix, docs, style, refactor, perf, test, chore, ci, build, revert"
+  echo "Example: feat(auth): add login page"
+  exit 1
+fi
+
+echo "✅ Commit message format is valid!" 
