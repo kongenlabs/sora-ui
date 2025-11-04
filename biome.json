@@ -13,6 +13,11 @@
     },
     "enabled": true
   },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
   "files": {
     "ignoreUnknown": true,
     "includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
@@ -81,7 +86,6 @@
       "nursery": {
         "noNextAsyncClientComponent": "error",
         "recommended": true,
-        "useReactFunctionComponents": "error",
         "useSortedClasses": {
           "fix": "safe",
           "level": "warn",
@@ -103,11 +107,18 @@
           "level": "warn",
           "options": {}
         },
-        "useFragmentSyntax": "error"
+        "useFragmentSyntax": "error",
+        "useReactFunctionComponents": "error",
+        "useSelfClosingElements": {
+          "fix": "safe",
+          "level": "error",
+          "options": {}
+        },
+        "useShorthandAssign": "error",
+        "useShorthandFunctionType": "error"
       },
       "suspicious": {
         "noDuplicateObjectKeys": "error",
-        "noUnknownAtRules": "off",
         "noVar": "error",
         "recommended": true
       }
