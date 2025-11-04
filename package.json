@@ -25,10 +25,10 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "check": "biome check --write",
     "dev": "next dev",
     "format": "biome format --write",
-    "check": "biome check",
-    "lint": "biome lint",
+    "lint": "biome lint --write",
     "start": "next start"
   },
   "version": "0.1.0"
