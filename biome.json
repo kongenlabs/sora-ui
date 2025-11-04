@@ -1,9 +1,17 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
+  "$schema": "https://biomejs.dev/schemas/2.3.3/schema.json",
+  "assist": {
+    "actions": {
+      "recommended": true,
+      "source": {
+        "organizeImports": "on",
+        "recommended": true,
+        "useSortedAttributes": "on",
+        "useSortedKeys": "on",
+        "useSortedProperties": "on"
+      }
+    },
+    "enabled": true
   },
   "files": {
     "ignoreUnknown": true,
@@ -12,26 +20,102 @@
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
-    "indentWidth": 2
+    "indentWidth": 2,
+    "lineWidth": 120
+  },
+  "javascript": {
+    "formatter": {
+      "enabled": true,
+      "indentStyle": "space",
+      "indentWidth": 2,
+      "jsxQuoteStyle": "single",
+      "lineWidth": 120,
+      "quoteStyle": "single"
+    }
   },
   "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true,
-      "suspicious": {
-        "noUnknownAtRules": "off"
-      }
-    },
     "domains": {
       "next": "recommended",
       "react": "recommended"
-    }
-  },
-  "assist": {
-    "actions": {
-      "source": {
-        "organizeImports": "on"
+    },
+    "enabled": true,
+    "rules": {
+      "complexity": {
+        "noUselessCatch": {
+          "fix": "safe",
+          "level": "error",
+          "options": {}
+        },
+        "noUselessContinue": {
+          "fix": "safe",
+          "level": "error",
+          "options": {}
+        },
+        "noUselessEmptyExport": {
+          "fix": "safe",
+          "level": "error",
+          "options": {}
+        },
+        "noUselessFragments": {
+          "fix": "safe",
+          "level": "error",
+          "options": {}
+        },
+        "recommended": true
+      },
+      "correctness": {
+        "noUnusedImports": {
+          "fix": "safe",
+          "level": "warn",
+          "options": {}
+        },
+        "noUnusedVariables": {
+          "fix": "safe",
+          "level": "warn",
+          "options": {}
+        },
+        "recommended": true,
+        "useExhaustiveDependencies": "warn",
+        "useHookAtTopLevel": "error"
+      },
+      "nursery": {
+        "noNextAsyncClientComponent": "error",
+        "recommended": true,
+        "useReactFunctionComponents": "error",
+        "useSortedClasses": {
+          "fix": "safe",
+          "level": "warn",
+          "options": {
+            "attributes": ["className", "classList"],
+            "functions": ["clsx", "cva", "tw", "tw.*", "cn"]
+          }
+        }
+      },
+      "performance": {
+        "noImgElement": "error",
+        "recommended": true
+      },
+      "recommended": true,
+      "style": {
+        "recommended": true,
+        "useConst": {
+          "fix": "safe",
+          "level": "warn",
+          "options": {}
+        },
+        "useFragmentSyntax": "error"
+      },
+      "suspicious": {
+        "noDuplicateObjectKeys": "error",
+        "noUnknownAtRules": "off",
+        "noVar": "error",
+        "recommended": true
       }
     }
+  },
+  "vcs": {
+    "clientKind": "git",
+    "enabled": true,
+    "useIgnoreFile": true
   }
 }
