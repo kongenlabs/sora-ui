@@ -1,13 +1,18 @@
+import { fonts } from '@/configs/font';
 import '@/styles/globals.css';
+import type { ReactNode } from 'react';
+import { cn } from '@/utils/tailwind';
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
+  const { noto, roboto } = fonts;
+
   return (
     <html lang='en'>
-      <body className={`antialiased`}>{children}</body>
+      <body className={cn(noto.variable, roboto.variable, 'scroll-smooth antialiased')}>{children}</body>
     </html>
   );
 }
