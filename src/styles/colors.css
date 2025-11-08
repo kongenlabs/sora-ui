@@ -1,4 +1,8 @@
-:root {
+/* biome-ignore assist/source/useSortedProperties: false positive */
+@theme {
+  /* Disable all default color */
+  --color-*: initial;
+
   /* Suna - 砂 */
   --color-suna-50: hsl(22.5, 80%, 98%);
   --color-suna-100: hsl(27.3, 84.6%, 94.9%);
@@ -102,4 +106,26 @@
   --color-hai-800: hsl(0, 0%, 20%);
   --color-hai-900: hsl(0, 0%, 10%);
   --color-hai-950: hsl(0, 0%, 5%);
+
+  /* Color */
+  --color-base: var(--color-sora-600);
+  --color-base-hover: var(--color-sora-700);
+
+  --color-soft: var(--color-sora-400);
+  --color-soft-hover: var(--color-sora-500);
+
+  --color-subtle: var(--color-sora-200);
+  --color-subtle-hover: var(--color-sora-300);
+
+  --color-flat: var(--color-sora-100);
+  --color-flat-hover: var(--color-sora-200);
+
+  --color-dark: var(--color-hai-800);
+  --color-dark-hover: var(--color-hai-900);
+
+  --color-neutral: var(--color-hai-400);
+  --color-neutral: var(--color-hai-500);
+
+  --color-light: var(--color-hai-50);
+  --color-light-hover: var(--color-hai-100);
 }
