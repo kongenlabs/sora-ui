@@ -11,8 +11,8 @@ export default function RootLayout({
   const { noto, roboto } = fonts;
 
   return (
-    <html lang='en'>
-      <body className={cn(noto.variable, roboto.variable, 'scroll-smooth antialiased')}>{children}</body>
+    <html className={cn(noto.variable, roboto.variable)} lang='en'>
+      <body className={cn('scroll-smooth antialiased')}>{children}</body>
     </html>
   );
 }
