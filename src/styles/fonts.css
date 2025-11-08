@@ -1,11 +1,6 @@
-@layer utilities {
-  .font-sans {
-    font-family: var(--font-roboto-sans), var(--font-noto-sans), sans-serif;
-  }
-  .font-serif {
-    font-family: var(--font-roboto-serif), var(--font-noto-serif), serif;
-  }
-  .font-mono {
-    font-family: var(--font-roboto-mono), var(--font-noto-sans-mono), monospace;
-  }
+@theme {
+  /* Font family */
+  --font-sans: var(--font-roboto-sans), var(--font-noto-sans), sans-serif;
+  --font-serif: var(--font-roboto-serif), var(--font-noto-serif), serif;
+  --font-mono: var(--font-roboto-mono), var(--font-noto-sans-mono), monospace;
 }
