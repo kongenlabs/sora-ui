@@ -1,131 +1,25 @@
-/* biome-ignore assist/source/useSortedProperties: false positive */
 @theme {
-  /* Disable all default color */
-  --color-*: initial;
+  --color-primary-50: hsl(195, 40%, 98%); /* Foreground / Background */
+  --color-primary-100: hsl(198, 50%, 96.1%);
+  --color-primary-200: hsl(192.6, 46.3%, 92%);
+  --color-primary-300: hsl(194.5, 47.5%, 88%);
+  --color-primary-400: hsl(194.2, 46.3%, 83.9%);
+  --color-primary-500: hsl(194.4, 46.4%, 70%);
+  --color-primary-600: hsl(194.4, 46.4%, 56.1%);
+  --color-primary-700: hsl(194.4, 46.7%, 42%);
+  --color-primary-800: hsl(193.6, 46.5%, 27.8%);
+  --color-primary-900: hsl(194.5, 46.5%, 13.9%); /* Border */
+  --color-primary-950: hsl(195, 44.4%, 7.1%); /* Foreground / Background */
 
-  /* Suna - 砂 */
-  --color-suna-50: hsl(22.5, 80%, 98%);
-  --color-suna-100: hsl(27.3, 84.6%, 94.9%);
-  --color-suna-200: hsl(25.1, 84.3%, 90%);
-  --color-suna-300: hsl(25.6, 85.9%, 86.1%);
-  --color-suna-400: hsl(25.3, 85.6%, 81%);
-  --color-suna-500: hsl(25.4, 85.7%, 67.1%);
-  --color-suna-600: hsl(25.4, 85.5%, 53.9%);
-  --color-suna-700: hsl(25.2, 85.3%, 40%);
-  --color-suna-800: hsl(25.4, 85.5%, 27.1%);
-  --color-suna-900: hsl(25.3, 85.1%, 13.1%);
-  --color-suna-950: hsl(24, 83.3%, 7.1%);
-
-  /* Mori - 森 */
-  --color-mori-50: hsl(120, 60%, 98%);
-  --color-mori-100: hsl(120, 60%, 96.1%);
-  --color-mori-200: hsl(120, 60%, 93.1%);
-  --color-mori-300: hsl(120, 57.1%, 89%);
-  --color-mori-400: hsl(120, 58.3%, 85.9%);
-  --color-mori-500: hsl(120, 58%, 72%);
-  --color-mori-600: hsl(120, 58.2%, 56.9%);
-  --color-mori-700: hsl(120, 58.2%, 43.1%);
-  --color-mori-800: hsl(120, 58.1%, 29%);
-  --color-mori-900: hsl(120, 58.3%, 14.1%);
-  --color-mori-950: hsl(120, 60%, 6.9%);
-
-  /* Sora - 空 */
-  --color-sora-50: hsl(195, 40%, 98%);
-  --color-sora-100: hsl(198, 50%, 96.1%);
-  --color-sora-200: hsl(192.6, 46.3%, 92%);
-  --color-sora-300: hsl(194.5, 47.5%, 88%);
-  --color-sora-400: hsl(194.2, 46.3%, 83.9%);
-  --color-sora-500: hsl(194.4, 46.4%, 70%);
-  --color-sora-600: hsl(194.4, 46.4%, 56.1%);
-  --color-sora-700: hsl(194.4, 46.7%, 42%);
-  --color-sora-800: hsl(193.6, 46.5%, 27.8%);
-  --color-sora-900: hsl(194.5, 46.5%, 13.9%);
-  --color-sora-950: hsl(195, 44.4%, 7.1%);
-
-  /* Hikari - 光 */
-  --color-hikari-50: hsl(48, 100%, 98%);
-  --color-hikari-100: hsl(48, 100%, 97.1%);
-  --color-hikari-200: hsl(48.3, 100%, 92.9%);
-  --color-hikari-300: hsl(48.2, 100%, 90%);
-  --color-hikari-400: hsl(48.2, 100%, 77.1%);
-  --color-hikari-500: hsl(48.3, 100%, 63.9%);
-  --color-hikari-600: hsl(48.2, 100%, 51%);
-  --color-hikari-700: hsl(48.2, 100%, 39%);
-  --color-hikari-800: hsl(48.3, 100%, 26.1%);
-  --color-hikari-900: hsl(48.2, 100%, 12.9%);
-  --color-hikari-950: hsl(48.4, 100%, 6.1%);
-
-  /* Homura - 焔 */
-  --color-homura-50: hsl(0, 62.5%, 96.9%);
-  --color-homura-100: hsl(0, 66.7%, 92.9%);
-  --color-homura-200: hsl(0, 66.7%, 87.1%);
-  --color-homura-300: hsl(0, 66.7%, 80%);
-  --color-homura-400: hsl(0, 65.9%, 73.5%);
-  --color-homura-500: hsl(0, 65.8%, 61%);
-  --color-homura-600: hsl(0, 65.6%, 49%);
-  --color-homura-700: hsl(0, 66.1%, 37.1%);
-  --color-homura-800: hsl(0, 65.6%, 25.1%);
-  --color-homura-900: hsl(0, 67.2%, 12%);
-  --color-homura-950: hsl(0, 66.7%, 5.9%);
-
-  /* Kiri - 霧 */
-  --color-kiri-50: hsl(276, 33.3%, 97.1%);
-  --color-kiri-100: hsl(282, 33.3%, 94.1%);
-  --color-kiri-200: hsl(280, 32.1%, 89%);
-  --color-kiri-300: hsl(281.4, 33.3%, 82.9%);
-  --color-kiri-400: hsl(281.1, 33.3%, 77.6%);
-  --color-kiri-500: hsl(281.7, 33%, 64.9%);
-  --color-kiri-600: hsl(281.5, 33.1%, 52%);
-  --color-kiri-700: hsl(281.2, 33.7%, 39%);
-  --color-kiri-800: hsl(280.9, 33.3%, 25.9%);
-  --color-kiri-900: hsl(280.9, 33.3%, 12.9%);
-  --color-kiri-950: hsl(282, 33.3%, 5.9%);
-
-  /* Sumi - 墨 */
-  --color-sumi-50: hsl(30, 8%, 98%);
-  --color-sumi-100: hsl(30, 7.5%, 95%);
-  --color-sumi-200: hsl(30, 7%, 91%);
-  --color-sumi-300: hsl(30, 6.5%, 86%);
-  --color-sumi-400: hsl(30, 6%, 79%);
-  --color-sumi-500: hsl(30, 5%, 65%);
-  --color-sumi-600: hsl(30, 5%, 50%);
-  --color-sumi-700: hsl(30, 4.5%, 35%);
-  --color-sumi-800: hsl(30, 4%, 20%);
-  --color-sumi-900: hsl(30, 3.5%, 10%);
-  --color-sumi-950: hsl(30, 3%, 5%);
-
-  /* Hai - 灰 */
-  --color-hai-50: hsl(0, 0%, 98%);
-  --color-hai-100: hsl(0, 0%, 95%);
-  --color-hai-200: hsl(0, 0%, 91%);
-  --color-hai-300: hsl(0, 0%, 86%);
-  --color-hai-400: hsl(0, 0%, 79%);
-  --color-hai-500: hsl(0, 0%, 65%);
-  --color-hai-600: hsl(0, 0%, 50%);
-  --color-hai-700: hsl(0, 0%, 35%);
-  --color-hai-800: hsl(0, 0%, 20%);
-  --color-hai-900: hsl(0, 0%, 10%);
-  --color-hai-950: hsl(0, 0%, 5%);
-
-  /* Color */
-  --color-base: var(--color-sora-600);
-  --color-base-hover: var(--color-sora-700);
-
-  --color-soft: var(--color-sora-400);
-  --color-soft-hover: var(--color-sora-500);
-
-  --color-subtle: var(--color-sora-200);
-  --color-subtle-hover: var(--color-sora-300);
-
-  --color-flat: var(--color-sora-100);
-  --color-flat-hover: var(--color-sora-200);
-
-  --color-dark: var(--color-hai-800);
-  --color-dark-hover: var(--color-hai-900);
-
-  --color-neutral: var(--color-hai-400);
-  --color-neutral: var(--color-hai-500);
-
-  --color-light: var(--color-hai-50);
-  --color-light-hover: var(--color-hai-100);
+  --color-secondary-50: hsl(0, 0%, 98%); /* Foreground / Background */
+  --color-secondary-100: hsl(0, 0%, 95%);
+  --color-secondary-200: hsl(0, 0%, 91%);
+  --color-secondary-300: hsl(0, 0%, 86%);
+  --color-secondary-400: hsl(0, 0%, 79%);
+  --color-secondary-500: hsl(0, 0%, 65%);
+  --color-secondary-600: hsl(0, 0%, 50%);
+  --color-secondary-700: hsl(0, 0%, 35%);
+  --color-secondary-800: hsl(0, 0%, 20%);
+  --color-secondary-900: hsl(0, 0%, 10%); /* Border */
+  --color-secondary-950: hsl(0, 0%, 5%); /* Foreground / Background */
 }
