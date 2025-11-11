@@ -71,7 +71,7 @@
 }
 
 @utility text-p {
-  @apply text-p;
+  @apply text-(--text-p);
 }
 
 @utility text-small {
@@ -79,33 +79,33 @@
 }
 
 @utility text-a {
-  @apply text-a;
+  @apply text-(--text-a);
 }
 
 @utility text-strong {
-  @apply text-strong;
+  @apply text-(--text-strong);
 }
 
 @utility text-em {
-  @apply text-em;
+  @apply text-(--text-em);
 }
 
 @utility text-blockquote {
-  @apply text-blockquote;
+  @apply text-(--text-blockquote);
 }
 
 @utility text-pre {
-  @apply text-pre;
+  @apply text-(--text-pre);
 }
 
 @utility text-code {
-  @apply text-code;
+  @apply text-(--text-code);
 }
 
 @utility text-kbd {
-  @apply text-kbd;
+  @apply text-(--text-kbd);
 }
 
 @utility text-figcaption {
-  @apply text-figcaption;
+  @apply text-(--text-figcaption);
 }
