@@ -1,0 +1,7 @@
+@theme {
+  --shadow-xs: 0 2px 0px var(--color-primary-950);
+  --shadow-sm: 0 4px 0px var(--color-primary-950);
+  --shadow-md: 0 8px 0px var(--color-primary-950);
+  --shadow-lg: 0 16px 0px var(--color-primary-950);
+  --shadow-xl: 0 32px 0px var(--color-primary-950);
+}
