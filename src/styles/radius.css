@@ -1,6 +1,6 @@
 @theme {
   --radius-offset: 0.125rem;
-  --radius: 1rem;
+  --radius: 0.75rem;
   --radius-3xs: calc(var(--radius) - var(--radius-offset) * 4);
   --radius-2xs: calc(var(--radius) - var(--radius-offset) * 3);
   --radius-xs: calc(var(--radius) - var(--radius-offset) * 2);
