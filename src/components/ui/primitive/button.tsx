@@ -1,6 +1,6 @@
 import { cva, cx, type VariantProps } from 'class-variance-authority';
 import type { ComponentProps } from 'react';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './tooltip';
+import { Tooltip, TooltipContent, type TooltipProvider, TooltipTrigger } from './tooltip';
 
 const buttonVariants = cva(
   cx(
@@ -97,7 +97,6 @@ const buttonVariants = cva(
         false: '',
         true: '',
       },
-
       size: {
         lg: cx('gap-2 rounded-lg text-button-lg', "[&_svg:not([class*='size-'])]:size-4.5"),
         md: cx('gap-1.5 rounded text-button-md', "[&_svg:not([class*='size-'])]:size-4"),
@@ -160,11 +159,9 @@ export function Button({
   if (!tooltip) return button;
 
   return (
-    <TooltipProvider delayDuration={100} {...tooltipProviderOptions}>
-      <Tooltip {...tooltipOptions}>
-        <TooltipTrigger asChild>{button}</TooltipTrigger>
-        <TooltipContent {...tooltipContentOptions}>{tooltip}</TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <Tooltip delayDuration={100} {...tooltipOptions}>
+      <TooltipTrigger asChild>{button}</TooltipTrigger>
+      <TooltipContent {...tooltipContentOptions}>{tooltip}</TooltipContent>
+    </Tooltip>
   );
 }

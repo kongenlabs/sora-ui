@@ -1,14 +1,23 @@
 'use client';
 
-import { Arrow, Content, Portal, Provider, Root, Trigger } from '@radix-ui/react-tooltip';
-import type { ComponentProps } from 'react';
-import { cn } from '@/utils/tailwind';
+import {
+  Content,
+  Portal,
+  Provider,
+  Root,
+  type TooltipContentProps,
+  type TooltipProps,
+  type TooltipProviderProps,
+  type TooltipTriggerProps,
+  Trigger,
+} from '@radix-ui/react-tooltip';
+import { cx } from 'class-variance-authority';
 
-function TooltipProvider({ delayDuration = 0, ...props }: ComponentProps<typeof Provider>) {
-  return <Provider data-slot='tooltip-provider' delayDuration={delayDuration} {...props} />;
+export function TooltipProvider({ ...props }: TooltipProviderProps) {
+  return <Provider data-slot='tooltip-provider' {...props} />;
 }
 
-function Tooltip({ ...props }: ComponentProps<typeof Root>) {
+export function Tooltip({ ...props }: TooltipProps) {
   return (
     <TooltipProvider>
       <Root data-slot='tooltip' {...props} />
@@ -16,27 +25,30 @@ function Tooltip({ ...props }: ComponentProps<typeof Root>) {
   );
 }
 
-function TooltipTrigger({ ...props }: ComponentProps<typeof Trigger>) {
+export function TooltipTrigger({ ...props }: TooltipTriggerProps) {
   return <Trigger data-slot='tooltip-trigger' {...props} />;
 }
 
-function TooltipContent({ className, sideOffset = 0, children, ...props }: ComponentProps<typeof Content>) {
+export function TooltipContent({ className, children, ...props }: TooltipContentProps) {
   return (
     <Portal>
       <Content
-        className={cn(
-          'fade-in-0 zoom-in-95 data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-fit origin-(--radix-tooltip-content-transform-origin) animate-in text-balance rounded-md bg-foreground px-3 py-1.5 text-background text-xs data-[state=closed]:animate-out',
+        className={cx(
+          'fade-in-0 zoom-in-95 -translate-y-2.5 z-50 w-fit origin-(--radix-tooltip-content-transform-origin) animate-in text-balance px-3 py-1.5 text-small shadow-xs',
+          'rounded border-2 bg-primary-50 text-primary-950',
+          'data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=closed]:animate-out',
+          'data-[side=bottom]:slide-in-from-top-2',
+          'data-[side=left]:slide-in-from-right-2',
+          'data-[side=top]:slide-in-from-bottom-2',
+          'data-[side=right]:slide-in-from-left-2',
+          'before:-translate-x-1/2 before:-translate-y-1/4 before:absolute before:top-full before:left-1/2 before:size-2.5 before:rotate-45 before:border-primary-950 before:border-r-4 before:border-b-4 before:bg-primary-50',
           className,
         )}
         data-slot='tooltip-content'
-        sideOffset={sideOffset}
         {...props}
       >
         {children}
-        <Arrow className='z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-offset bg-foreground fill-foreground' />
       </Content>
     </Portal>
   );
 }
-
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };
