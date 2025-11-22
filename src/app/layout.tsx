@@ -1,7 +1,9 @@
-import { fonts } from '@/configs/font';
 import '@/styles/globals.css';
+
+import { cx } from 'class-variance-authority';
 import type { ReactNode } from 'react';
-import { cn } from '@/utils/tailwind';
+import { fonts } from '@/configs/font';
+import { ThemeProvider } from '@/contexts/theme';
 
 export default function RootLayout({
   children,
@@ -11,8 +13,12 @@ export default function RootLayout({
   const { noto, roboto } = fonts;
 
   return (
-    <html className={cn(noto.variable, roboto.variable)} lang='en'>
-      <body className={cn('scroll-smooth antialiased')}>{children}</body>
+    <html className={cx(noto.variable, roboto.variable)} lang='en' suppressHydrationWarning>
+      <body className={cx('scroll-smooth bg-background text-foreground antialiased')}>
+        <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
