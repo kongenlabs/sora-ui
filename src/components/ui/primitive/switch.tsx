@@ -3,31 +3,35 @@ import { cx } from 'class-variance-authority';
 import type { ComponentProps, ReactNode } from 'react';
 
 const switchRootStyles = cx(
-  'peer group relative inline-flex h-7 w-12 shrink-0 cursor-pointer items-center rounded-xs border-2 outline-none transition-all',
+  'peer group relative inline-flex h-7 w-12 shrink-0 cursor-pointer items-center rounded-xs border-2 transition-all',
   'disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none',
-  'focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50',
+  'focus-visible:outline-3',
   '[&_svg]:size-4',
 
   // Accent
   'data-[color=accent]:border-accent-border',
+  'data-[color=accent]:focus-visible:outline-accent-border/60',
   'data-[color=accent]:data-[state=checked]:bg-accent-background',
   'data-[color=accent]:data-[state=checked]:text-accent-foreground',
   'data-[color=accent]:data-[state=unchecked]:bg-accent-foreground',
 
   // Primary
   'data-[color=primary]:border-primary-border',
+  'data-[color=primary]:focus-visible:outline-primary-border/60',
   'data-[color=primary]:data-[state=checked]:bg-primary-background',
   'data-[color=primary]:data-[state=checked]:text-primary-foreground',
   'data-[color=primary]:data-[state=unchecked]:bg-primary-foreground',
 
   // Secondary
   'data-[color=secondary]:border-secondary-border',
+  'data-[color=secondary]:focus-visible:outline-secondary-border/60',
   'data-[color=secondary]:data-[state=checked]:bg-secondary-background',
   'data-[color=secondary]:data-[state=checked]:text-secondary-foreground',
   'data-[color=secondary]:data-[state=unchecked]:bg-secondary-foreground',
 
   // Tertiary
   'data-[color=tertiary]:border-tertiary-border',
+  'data-[color=tertiary]:focus-visible:outline-tertiary-border/60',
   'data-[color=tertiary]:data-[state=checked]:bg-tertiary-background',
   'data-[color=tertiary]:data-[state=checked]:text-tertiary-foreground',
   'data-[color=tertiary]:data-[state=unchecked]:bg-tertiary-foreground',
