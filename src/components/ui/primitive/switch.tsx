@@ -118,9 +118,8 @@ function SwitchUncheckedLabel({ children, color = 'primary', className, ...props
 function Switch({ className, color = 'primary', children, ...props }: SwitchProps) {
   return (
     <Root className={cx(switchRootStyles, className)} data-color={color} data-slot='switch' {...props}>
-      <Thumb className={switchThumbStyles} data-slot='switch-thumb'>
-        {children}
-      </Thumb>
+      <Thumb className={switchThumbStyles} data-slot='switch-thumb' />
+      {children}
     </Root>
   );
 }
