@@ -10,7 +10,7 @@ import {
 } from './tooltip';
 
 const buttonStyles = cx(
-  '-translate-y-1 relative inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap border-2 font-medium leading-none shadow-sm transition-all duration-125',
+  '-translate-y-1 relative inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap border-2 font-medium leading-none shadow-sm transition-all duration-150',
   '[&_svg]:pointer-events-none [&_svg]:shrink-0',
   'focus-visible:outline-3',
   'disabled:translate-none disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none',
@@ -46,8 +46,7 @@ const buttonStyles = cx(
   'data-[color=accent]:border-accent-border data-[color=accent]:bg-accent-background data-[color=accent]:text-accent-foreground data-[color=accent]:shadow-accent-shadow',
   'data-[color=accent]:focus-visible:outline-accent-border/60',
 );
-
-export type ButtonProps = ComponentProps<'button'> & {
+type ButtonProps = ComponentProps<'button'> & {
   color?: 'primary' | 'secondary' | 'tertiary' | 'accent';
   size?: 'sm' | 'md' | 'lg';
   icon?: boolean;
@@ -56,8 +55,7 @@ export type ButtonProps = ComponentProps<'button'> & {
   tooltipTriggerOptions?: TooltipTriggerProps;
   tooltipContentOptions?: TooltipContentProps;
 };
-
-export function Button({
+function Button({
   className,
   icon = false,
   color = 'primary',
@@ -92,3 +90,6 @@ export function Button({
     </Tooltip>
   );
 }
+
+export { Button };
+export type { ButtonProps };

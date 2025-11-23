@@ -1,0 +1,15 @@
+@theme {
+  --animate-tick: tick 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+
+  @keyframes tick {
+    from {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+    }
+
+    to {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 0;
+    }
+  }
+}
