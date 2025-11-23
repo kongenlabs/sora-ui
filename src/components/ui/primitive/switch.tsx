@@ -1,6 +1,6 @@
 import { type SwitchProps as RadixSwitchProps, Root, Thumb } from '@radix-ui/react-switch';
 import { cx } from 'class-variance-authority';
-import type { ReactNode } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 
 const switchRootStyles = cx(
   'peer group relative inline-flex h-7 w-12 shrink-0 cursor-pointer items-center rounded-xs border-2 outline-none transition-all',
@@ -82,41 +82,47 @@ const uncheckedElementStyles = cx(
 
 type SwitchProps = RadixSwitchProps & {
   color?: 'primary' | 'secondary' | 'tertiary' | 'accent';
-  checkedElement?: ReactNode;
-  uncheckedElement?: ReactNode;
 };
 
-type SwitchElementProps = {
+type SwitchLabelProps = ComponentProps<'span'> & {
   children: ReactNode;
   color?: 'primary' | 'secondary' | 'tertiary' | 'accent';
 };
 
-function CheckedElement({ children, color = 'primary' }: SwitchElementProps) {
+function SwitchCheckedLabel({ children, color = 'primary', className, ...props }: SwitchLabelProps) {
   return (
-    <span className={checkedElementStyles} data-color={color} data-slot='switch-checked-element'>
+    <span
+      className={cx(checkedElementStyles, className)}
+      data-color={color}
+      data-slot='switch-checked-label'
+      {...props}
+    >
       {children}
     </span>
   );
 }
 
-function UncheckedElement({ children, color = 'primary' }: SwitchElementProps) {
+function SwitchUncheckedLabel({ children, color = 'primary', className, ...props }: SwitchLabelProps) {
   return (
-    <span className={uncheckedElementStyles} data-color={color} data-slot='switch-unchecked-element'>
+    <span
+      className={cx(uncheckedElementStyles, className)}
+      data-color={color}
+      data-slot='switch-unchecked-label'
+      {...props}
+    >
       {children}
     </span>
   );
 }
 
-function Switch({ className, color = 'primary', children, checkedElement, uncheckedElement, ...props }: SwitchProps) {
+function Switch({ className, color = 'primary', children, ...props }: SwitchProps) {
   return (
     <Root className={cx(switchRootStyles, className)} data-color={color} data-slot='switch' {...props}>
       <Thumb className={switchThumbStyles} data-slot='switch-thumb'>
         {children}
       </Thumb>
-      {checkedElement && <CheckedElement color={color}>{checkedElement}</CheckedElement>}
-      {uncheckedElement && <UncheckedElement color={color}>{uncheckedElement}</UncheckedElement>}
     </Root>
   );
 }
 
-export { Switch, type SwitchProps, type SwitchElementProps };
+export { Switch, SwitchCheckedLabel, SwitchUncheckedLabel, type SwitchProps, type SwitchLabelProps };
