@@ -3,8 +3,8 @@ import { cx } from 'class-variance-authority';
 import { CheckIcon } from 'lucide-react';
 
 const checkboxStyles = cx(
-  'peer size-6 shrink-0 rounded-2xs border-2 shadow-sm outline-none transition-all',
-  'disabled:cursor-not-allowed disabled:opacity-50',
+  'peer cursor-pointer size-6 shrink-0 rounded-2xs border-2 shadow-sm transition-all',
+  'disabled:pointer-events-none disabled:shadow-none disabled:opacity-50',
   'active:translate-y-1 active:shadow-none',
   'focus-visible:outline-3',
 
