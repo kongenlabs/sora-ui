@@ -73,7 +73,10 @@ const uncheckedElementStyles = cx(
   '-translate-y-1/2 pointer-events-none absolute top-1/2 right-1.5 flex items-center justify-center text-xs leading-none transition-opacity duration-200',
   'group-data-[state=checked]:opacity-0',
   'group-data-[state=unchecked]:opacity-100',
-  'text-foreground-sub',
+  'group-data-[color=primary]:text-primary-background',
+  'group-data-[color=secondary]:text-secondary-background',
+  'group-data-[color=tertiary]:text-tertiary-background',
+  'group-data-[color=accent]:text-accent-background',
 );
 
 type SwitchProps = RadixSwitchProps & {
