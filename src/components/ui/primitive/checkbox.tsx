@@ -9,36 +9,24 @@ const checkboxStyles = cx(
   'focus-visible:outline-3',
 
   // Primary color
-  'data-[color=primary]:border-primary-border',
-  'data-[color=primary]:shadow-primary-shadow',
+  'data-[color=primary]:border-primary-border data-[color=primary]:shadow-primary-shadow',
   'data-[color=primary]:focus-visible:outline-primary-border/60',
-  'data-[color=primary]:data-[state=checked]:border-primary-border',
-  'data-[color=primary]:data-[state=checked]:bg-primary-background',
-  'data-[color=primary]:data-[state=checked]:text-primary-foreground',
+  'data-[color=primary]:data-[state=checked]:border-primary-border data-[color=primary]:data-[state=checked]:bg-primary-background data-[color=primary]:data-[state=checked]:text-primary-foreground',
 
   // Secondary color
-  'data-[color=secondary]:border-secondary-border',
-  'data-[color=secondary]:shadow-secondary-shadow',
+  'data-[color=secondary]:border-secondary-border data-[color=secondary]:shadow-secondary-shadow',
   'data-[color=secondary]:focus-visible:outline-secondary-border/60',
-  'data-[color=secondary]:data-[state=checked]:border-secondary-border',
-  'data-[color=secondary]:data-[state=checked]:bg-secondary-background',
-  'data-[color=secondary]:data-[state=checked]:text-secondary-foreground',
+  'data-[color=secondary]:data-[state=checked]:border-secondary-border data-[color=secondary]:data-[state=checked]:bg-secondary-background data-[color=secondary]:data-[state=checked]:text-secondary-foreground',
 
   // Tertiary color
-  'data-[color=tertiary]:border-tertiary-border',
-  'data-[color=tertiary]:shadow-tertiary-shadow',
+  'data-[color=tertiary]:border-tertiary-border data-[color=tertiary]:shadow-tertiary-shadow',
   'data-[color=tertiary]:focus-visible:outline-tertiary-border/60',
-  'data-[color=tertiary]:data-[state=checked]:border-tertiary-border',
-  'data-[color=tertiary]:data-[state=checked]:bg-tertiary-background',
-  'data-[color=tertiary]:data-[state=checked]:text-tertiary-foreground',
+  'data-[color=tertiary]:data-[state=checked]:border-tertiary-border data-[color=tertiary]:data-[state=checked]:bg-tertiary-background data-[color=tertiary]:data-[state=checked]:text-tertiary-foreground',
 
   // Accent color
-  'data-[color=accent]:border-accent-border',
-  'data-[color=accent]:shadow-accent-shadow',
+  'data-[color=accent]:border-accent-border data-[color=accent]:shadow-accent-shadow',
   'data-[color=accent]:focus-visible:outline-accent-border/60',
-  'data-[color=accent]:data-[state=checked]:border-accent-border',
-  'data-[color=accent]:data-[state=checked]:bg-accent-background',
-  'data-[color=accent]:data-[state=checked]:text-accent-foreground',
+  'data-[color=accent]:data-[state=checked]:border-accent-border data-[color=accent]:data-[state=checked]:bg-accent-background data-[color=accent]:data-[state=checked]:text-accent-foreground',
 );
 
 type CheckboxProps = RadixCheckboxProps & {

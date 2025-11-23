@@ -12,28 +12,24 @@ const switchRootStyles = cx(
   'data-[color=accent]:border-accent-border',
   'data-[color=accent]:focus-visible:outline-accent-border/60',
   'data-[color=accent]:data-[state=checked]:bg-accent-background',
-  'data-[color=accent]:data-[state=checked]:text-accent-foreground',
   'data-[color=accent]:data-[state=unchecked]:bg-accent-foreground',
 
   // Primary
   'data-[color=primary]:border-primary-border',
   'data-[color=primary]:focus-visible:outline-primary-border/60',
   'data-[color=primary]:data-[state=checked]:bg-primary-background',
-  'data-[color=primary]:data-[state=checked]:text-primary-foreground',
   'data-[color=primary]:data-[state=unchecked]:bg-primary-foreground',
 
   // Secondary
   'data-[color=secondary]:border-secondary-border',
   'data-[color=secondary]:focus-visible:outline-secondary-border/60',
   'data-[color=secondary]:data-[state=checked]:bg-secondary-background',
-  'data-[color=secondary]:data-[state=checked]:text-secondary-foreground',
   'data-[color=secondary]:data-[state=unchecked]:bg-secondary-foreground',
 
   // Tertiary
   'data-[color=tertiary]:border-tertiary-border',
   'data-[color=tertiary]:focus-visible:outline-tertiary-border/60',
   'data-[color=tertiary]:data-[state=checked]:bg-tertiary-background',
-  'data-[color=tertiary]:data-[state=checked]:text-tertiary-foreground',
   'data-[color=tertiary]:data-[state=unchecked]:bg-tertiary-foreground',
 );
 
@@ -43,26 +39,22 @@ const switchThumbStyles = cx(
   'data-[state=unchecked]:left-0.5 data-[state=unchecked]:translate-x-0',
 
   // Accent
-  'group-data-[color=accent]:border-accent-border',
-  'group-data-[color=accent]:shadow-accent-shadow',
+  'group-data-[color=accent]:border-accent-border group-data-[color=accent]:shadow-accent-shadow',
   'group-data-[color=accent]:data-[state=unchecked]:bg-accent-background',
   'group-data-[color=accent]:data-[state=checked]:bg-accent-foreground',
 
   // Primary
-  'group-data-[color=primary]:border-primary-border',
-  'group-data-[color=primary]:shadow-primary-shadow',
+  'group-data-[color=primary]:border-primary-border group-data-[color=primary]:shadow-primary-shadow',
   'group-data-[color=primary]:data-[state=unchecked]:bg-primary-background',
   'group-data-[color=primary]:data-[state=checked]:bg-primary-foreground',
 
   // Secondary
-  'group-data-[color=secondary]:border-secondary-border',
-  'group-data-[color=secondary]:shadow-secondary-shadow',
+  'group-data-[color=secondary]:border-secondary-border group-data-[color=secondary]:shadow-secondary-shadow',
   'group-data-[color=secondary]:data-[state=unchecked]:bg-secondary-background',
   'group-data-[color=secondary]:data-[state=checked]:bg-secondary-foreground',
 
   // Tertiary
-  'group-data-[color=tertiary]:border-tertiary-border',
-  'group-data-[color=tertiary]:shadow-tertiary-shadow',
+  'group-data-[color=tertiary]:border-tertiary-border group-data-[color=tertiary]:shadow-tertiary-shadow',
   'group-data-[color=tertiary]:data-[state=unchecked]:bg-tertiary-background',
   'group-data-[color=tertiary]:data-[state=checked]:bg-tertiary-foreground',
 );
@@ -71,10 +63,10 @@ const checkedElementStyles = cx(
   '-translate-y-1/2 pointer-events-none absolute top-1/2 left-1.5 flex items-center justify-center text-xs leading-none transition-opacity duration-200',
   'group-data-[state=checked]:opacity-100',
   'group-data-[state=unchecked]:opacity-0',
-  'data-[color=primary]:text-primary-foreground',
-  'data-[color=secondary]:text-secondary-foreground',
-  'data-[color=tertiary]:text-tertiary-foreground',
-  'data-[color=accent]:text-accent-foreground',
+  'group-data-[color=primary]:text-primary-foreground',
+  'group-data-[color=secondary]:text-secondary-foreground',
+  'group-data-[color=tertiary]:text-tertiary-foreground',
+  'group-data-[color=accent]:text-accent-foreground',
 );
 
 const uncheckedElementStyles = cx(
@@ -90,30 +82,19 @@ type SwitchProps = RadixSwitchProps & {
 
 type SwitchLabelProps = ComponentProps<'span'> & {
   children: ReactNode;
-  color?: 'primary' | 'secondary' | 'tertiary' | 'accent';
 };
 
-function SwitchCheckedLabel({ children, color = 'primary', className, ...props }: SwitchLabelProps) {
+function SwitchCheckedLabel({ children, className, ...props }: SwitchLabelProps) {
   return (
-    <span
-      className={cx(checkedElementStyles, className)}
-      data-color={color}
-      data-slot='switch-checked-label'
-      {...props}
-    >
+    <span className={cx(checkedElementStyles, className)} data-slot='switch-checked-label' {...props}>
       {children}
     </span>
   );
 }
 
-function SwitchUncheckedLabel({ children, color = 'primary', className, ...props }: SwitchLabelProps) {
+function SwitchUncheckedLabel({ children, className, ...props }: SwitchLabelProps) {
   return (
-    <span
-      className={cx(uncheckedElementStyles, className)}
-      data-color={color}
-      data-slot='switch-unchecked-label'
-      {...props}
-    >
+    <span className={cx(uncheckedElementStyles, className)} data-slot='switch-unchecked-label' {...props}>
       {children}
     </span>
   );

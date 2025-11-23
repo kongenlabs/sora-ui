@@ -31,31 +31,19 @@ const buttonStyles = cx(
   'data-[icon=true]:data-[size=lg]:p-2.5',
 
   // Primary color
-  'data-[color=primary]:border-primary-border',
-  'data-[color=primary]:bg-primary-background',
-  'data-[color=primary]:text-primary-foreground',
-  'data-[color=primary]:shadow-primary-shadow',
+  'data-[color=primary]:border-primary-border data-[color=primary]:bg-primary-background data-[color=primary]:text-primary-foreground data-[color=primary]:shadow-primary-shadow',
   'data-[color=primary]:focus-visible:outline-primary-border/60',
 
   // Secondary color
-  'data-[color=secondary]:border-secondary-border',
-  'data-[color=secondary]:bg-secondary-background',
-  'data-[color=secondary]:text-secondary-foreground',
-  'data-[color=secondary]:shadow-secondary-shadow',
+  'data-[color=secondary]:border-secondary-border data-[color=secondary]:bg-secondary-background data-[color=secondary]:text-secondary-foreground data-[color=secondary]:shadow-secondary-shadow',
   'data-[color=secondary]:focus-visible:outline-secondary-border/60',
 
   // Tertiary color
-  'data-[color=tertiary]:border-tertiary-border',
-  'data-[color=tertiary]:bg-tertiary-background',
-  'data-[color=tertiary]:text-tertiary-foreground',
-  'data-[color=tertiary]:shadow-tertiary-shadow',
+  'data-[color=tertiary]:border-tertiary-border data-[color=tertiary]:bg-tertiary-background data-[color=tertiary]:text-tertiary-foreground data-[color=tertiary]:shadow-tertiary-shadow',
   'data-[color=tertiary]:focus-visible:outline-tertiary-border/60',
 
   // Accent color
-  'data-[color=accent]:border-accent-border',
-  'data-[color=accent]:bg-accent-background',
-  'data-[color=accent]:text-accent-foreground',
-  'data-[color=accent]:shadow-accent-shadow',
+  'data-[color=accent]:border-accent-border data-[color=accent]:bg-accent-background data-[color=accent]:text-accent-foreground data-[color=accent]:shadow-accent-shadow',
   'data-[color=accent]:focus-visible:outline-accent-border/60',
 );
 
