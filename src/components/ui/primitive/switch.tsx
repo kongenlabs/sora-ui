@@ -9,9 +9,17 @@ import type { ComponentProps, ReactNode } from 'react';
 
 // Switch Thumb
 const switchThumbStyles = cx(
-  '-translate-y-0.5 pointer-events-none absolute block size-4 rounded-2xs border-2 shadow-sm ring-0 transition-all duration-150',
-  'data-[state=checked]:-translate-x-full data-[state=checked]:left-[calc(100%-2px)] data-[state=checked]:bg-background',
-  'data-[state=unchecked]:left-0.5 data-[state=unchecked]:translate-x-0',
+  '-translate-y-0.5 absolute block rounded-2xs border-2 shadow-sm ring-0 transition-all duration-150',
+
+  // Pilled variant (v1 style)
+  'group-data-[variant=pilled]:pointer-events-none group-data-[variant=pilled]:size-4',
+  'group-data-[variant=pilled]:data-[state=checked]:-translate-x-full group-data-[variant=pilled]:data-[state=checked]:left-[calc(100%-2px)]',
+  'group-data-[variant=pilled]:data-[state=unchecked]:left-0.5 group-data-[variant=pilled]:data-[state=unchecked]:translate-x-0',
+
+  // Slider variant (v2 style)
+  'group-data-[variant=slider]:size-6',
+  'group-data-[variant=slider]:data-[state=checked]:-translate-x-3/4 group-data-[variant=slider]:data-[state=checked]:left-full',
+  'group-data-[variant=slider]:data-[state=unchecked]:left-0 group-data-[variant=slider]:data-[state=unchecked]:-translate-x-1/4',
 
   // Accent
   'group-data-[color=accent]:border-accent-border group-data-[color=accent]:shadow-accent-shadow',
@@ -33,30 +41,58 @@ const switchThumbStyles = cx(
   'group-data-[color=tertiary]:data-[state=unchecked]:bg-tertiary-background',
   'group-data-[color=tertiary]:data-[state=checked]:bg-tertiary-foreground',
 );
-type SwitchThumbProps = RadixSwitchThumbProps;
-function SwitchThumb({ className, color = 'primary', ...props }: SwitchThumbProps) {
-  return <Thumb className={switchThumbStyles} data-color={color} data-slot='switch-thumb' {...props} />;
+type SwitchThumbProps = RadixSwitchThumbProps & {
+  children?: ReactNode;
+};
+function SwitchThumb({ className, children, ...props }: SwitchThumbProps) {
+  return (
+    <Thumb className={cx(switchThumbStyles, className)} data-slot='switch-thumb' {...props}>
+      {children}
+    </Thumb>
+  );
 }
 
-// Switch Label
+// Switch Labels
 const checkedLabelStyles = cx(
-  '-translate-y-1/2 pointer-events-none absolute top-1/2 left-1.5 flex items-center justify-center text-xs leading-none transition-opacity duration-150',
+  '-translate-y-1/2 pointer-events-none absolute top-1/2 flex items-center justify-center text-xs leading-none transition-opacity duration-150',
   'group-data-[state=checked]:opacity-100',
   'group-data-[state=unchecked]:opacity-0',
-  'group-data-[color=primary]:text-primary-foreground',
-  'group-data-[color=secondary]:text-secondary-foreground',
-  'group-data-[color=tertiary]:text-tertiary-foreground',
-  'group-data-[color=accent]:text-accent-foreground',
+
+  // Pilled variant positioning and colors
+  'group-data-[variant=pilled]:left-1.5',
+  'group-data-[variant=pilled]:group-data-[color=primary]:text-primary-foreground',
+  'group-data-[variant=pilled]:group-data-[color=secondary]:text-secondary-foreground',
+  'group-data-[variant=pilled]:group-data-[color=tertiary]:text-tertiary-foreground',
+  'group-data-[variant=pilled]:group-data-[color=accent]:text-accent-foreground',
+
+  // Slider variant positioning and colors
+  'group-data-[variant=slider]:left-1/2 group-data-[variant=slider]:-translate-x-1/2',
+  'group-data-[variant=slider]:group-data-[color=primary]:text-primary-background',
+  'group-data-[variant=slider]:group-data-[color=secondary]:text-secondary-background',
+  'group-data-[variant=slider]:group-data-[color=tertiary]:text-tertiary-background',
+  'group-data-[variant=slider]:group-data-[color=accent]:text-accent-background',
 );
+
 const uncheckedLabelStyles = cx(
-  '-translate-y-1/2 pointer-events-none absolute top-1/2 right-1.5 flex items-center justify-center text-xs leading-none transition-opacity duration-150',
+  '-translate-y-1/2 pointer-events-none absolute top-1/2 flex items-center justify-center text-xs leading-none transition-opacity duration-150',
   'group-data-[state=checked]:opacity-0',
   'group-data-[state=unchecked]:opacity-100',
-  'group-data-[color=primary]:text-primary-background',
-  'group-data-[color=secondary]:text-secondary-background',
-  'group-data-[color=tertiary]:text-tertiary-background',
-  'group-data-[color=accent]:text-accent-background',
+
+  // Pilled variant positioning and colors
+  'group-data-[variant=pilled]:right-1.5',
+  'group-data-[variant=pilled]:group-data-[color=primary]:text-primary-background',
+  'group-data-[variant=pilled]:group-data-[color=secondary]:text-secondary-background',
+  'group-data-[variant=pilled]:group-data-[color=tertiary]:text-tertiary-background',
+  'group-data-[variant=pilled]:group-data-[color=accent]:text-accent-background',
+
+  // Slider variant positioning and colors
+  'group-data-[variant=slider]:left-1/2 group-data-[variant=slider]:-translate-x-1/2',
+  'group-data-[variant=slider]:group-data-[color=primary]:text-primary-foreground',
+  'group-data-[variant=slider]:group-data-[color=secondary]:text-secondary-foreground',
+  'group-data-[variant=slider]:group-data-[color=tertiary]:text-tertiary-foreground',
+  'group-data-[variant=slider]:group-data-[color=accent]:text-accent-foreground',
 );
+
 type SwitchLabelProps = ComponentProps<'span'> & {
   children: ReactNode;
 };
@@ -77,10 +113,16 @@ function SwitchUncheckedLabel({ children, className, ...props }: SwitchLabelProp
 
 // Switch Root
 const switchRootStyles = cx(
-  'peer group relative inline-flex h-7 w-12 shrink-0 cursor-pointer items-center rounded-xs border-2 transition-all',
+  'peer group relative inline-flex shrink-0 cursor-pointer items-center rounded-xs border-2 transition-all',
   'disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none',
   'focus-visible:outline-3',
   '[&_svg]:size-4',
+
+  // Pilled variant dimensions
+  'data-[variant=pilled]:h-7 data-[variant=pilled]:w-12',
+
+  // Slider variant dimensions
+  'data-[variant=slider]:h-2 data-[variant=slider]:w-10',
 
   // Accent
   'data-[color=accent]:border-accent-border',
@@ -108,10 +150,19 @@ const switchRootStyles = cx(
 );
 type SwitchRootProps = RadixSwitchProps & {
   color?: 'primary' | 'secondary' | 'tertiary' | 'accent';
+  variant?: 'pilled' | 'slider';
 };
 
-function SwitchRoot({ className, color = 'primary', ...props }: SwitchRootProps) {
-  return <Root className={cx(switchRootStyles, className)} data-color={color} data-slot='switch' {...props} />;
+function SwitchRoot({ className, color = 'primary', variant = 'pilled', ...props }: SwitchRootProps) {
+  return (
+    <Root
+      className={cx(switchRootStyles, className)}
+      data-color={color}
+      data-slot='switch'
+      data-variant={variant}
+      {...props}
+    />
+  );
 }
 
 // Switch
@@ -119,15 +170,26 @@ type SwitchProps = SwitchRootProps & {
   checkedLabel?: ReactNode;
   uncheckedLabel?: ReactNode;
 };
-function Switch({ className, checkedLabel, uncheckedLabel, ...props }: SwitchProps) {
+function Switch({ className, checkedLabel, uncheckedLabel, variant = 'slider', ...props }: SwitchProps) {
+  // For pilled variant, labels are on root
+  // For slider variant, labels are inside thumb
   return (
-    <SwitchRoot {...props}>
-      <SwitchThumb />
-      {checkedLabel && <SwitchCheckedLabel>{checkedLabel}</SwitchCheckedLabel>}
-      {uncheckedLabel && <SwitchUncheckedLabel>{uncheckedLabel}</SwitchUncheckedLabel>}
+    <SwitchRoot variant={variant} {...props}>
+      {variant === 'pilled' ? (
+        <>
+          <SwitchThumb />
+          {checkedLabel && <SwitchCheckedLabel>{checkedLabel}</SwitchCheckedLabel>}
+          {uncheckedLabel && <SwitchUncheckedLabel>{uncheckedLabel}</SwitchUncheckedLabel>}
+        </>
+      ) : (
+        <SwitchThumb>
+          {checkedLabel && <SwitchCheckedLabel>{checkedLabel}</SwitchCheckedLabel>}
+          {uncheckedLabel && <SwitchUncheckedLabel>{uncheckedLabel}</SwitchUncheckedLabel>}
+        </SwitchThumb>
+      )}
     </SwitchRoot>
   );
 }
 
 export { Switch, SwitchCheckedLabel, SwitchUncheckedLabel, SwitchThumb, SwitchRoot };
-export type { SwitchProps, SwitchLabelProps, SwitchThumbProps };
+export type { SwitchProps, SwitchLabelProps, SwitchThumbProps, SwitchRootProps };
