@@ -106,27 +106,28 @@ const switchRootStyles = cx(
   'data-[color=tertiary]:data-[state=checked]:bg-tertiary-background',
   'data-[color=tertiary]:data-[state=unchecked]:bg-tertiary-foreground',
 );
-type SwitchProps = RadixSwitchProps & {
+type SwitchRootProps = RadixSwitchProps & {
   color?: 'primary' | 'secondary' | 'tertiary' | 'accent';
+};
+
+function SwitchRoot({ className, color = 'primary', ...props }: SwitchRootProps) {
+  return <Root className={cx(switchRootStyles, className)} data-color={color} data-slot='switch' {...props} />;
+}
+
+// Switch
+type SwitchProps = SwitchRootProps & {
   checkedLabel?: ReactNode;
   uncheckedLabel?: ReactNode;
 };
-function Switch({ className, color = 'primary', checkedLabel, uncheckedLabel, children, ...props }: SwitchProps) {
-  if (children)
-    return (
-      <Root className={cx(switchRootStyles, className)} data-color={color} data-slot='switch' {...props}>
-        {children}
-      </Root>
-    );
-
+function Switch({ className, checkedLabel, uncheckedLabel, ...props }: SwitchProps) {
   return (
-    <Root className={cx(switchRootStyles, className)} data-color={color} data-slot='switch' {...props}>
+    <SwitchRoot {...props}>
       <SwitchThumb />
       {checkedLabel && <SwitchCheckedLabel>{checkedLabel}</SwitchCheckedLabel>}
       {uncheckedLabel && <SwitchUncheckedLabel>{uncheckedLabel}</SwitchUncheckedLabel>}
-    </Root>
+    </SwitchRoot>
   );
 }
 
-export { Switch, SwitchCheckedLabel, SwitchUncheckedLabel };
+export { Switch, SwitchCheckedLabel, SwitchUncheckedLabel, SwitchThumb, SwitchRoot };
 export type { SwitchProps, SwitchLabelProps, SwitchThumbProps };

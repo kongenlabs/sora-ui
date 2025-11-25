@@ -1,10 +1,22 @@
-import { Indicator, type CheckboxProps as RadixCheckboxProps, Root } from '@radix-ui/react-checkbox';
+import {
+  Indicator,
+  type CheckboxIndicatorProps as RadixCheckboxIndicatorProps,
+  type CheckboxProps as RadixCheckboxProps,
+  Root,
+} from '@radix-ui/react-checkbox';
 import { cx } from 'class-variance-authority';
 
-const checkboxStyles = cx(
-  'peer cursor-pointer size-6 shrink-0 rounded-2xs border-2 shadow-sm transition-all duration-150',
+// Checkbox Indicator
+type CheckboxIndicatorProps = RadixCheckboxIndicatorProps;
+function CheckboxIndicator({ className, ...props }: CheckboxIndicatorProps) {
+  return <Indicator className='grid place-content-center text-current' data-slot='checkbox-indicator' {...props} />;
+}
+
+// Checkbox Root
+const checkboxRootStyles = cx(
+  'peer cursor-pointer size-6 shrink-0 rounded-2xs border-2 shadow-sm transition-all duration-150 -translate-y-0.75',
   'disabled:pointer-events-none disabled:shadow-none disabled:opacity-50',
-  'active:translate-y-1 active:shadow-none',
+  'active:translate-y-0.25 active:shadow-none',
   'focus-visible:outline-3',
 
   // Primary color
@@ -27,13 +39,19 @@ const checkboxStyles = cx(
   'data-[color=accent]:focus-visible:outline-accent-border/60',
   'data-[color=accent]:data-[state=checked]:border-accent-border data-[color=accent]:data-[state=checked]:bg-accent-background data-[color=accent]:data-[state=checked]:text-accent-foreground',
 );
-type CheckboxProps = RadixCheckboxProps & {
+type CheckboxRootProps = RadixCheckboxProps & {
   color?: 'primary' | 'secondary' | 'tertiary' | 'accent';
 };
-function Checkbox({ className, color = 'primary', ...props }: CheckboxProps) {
+function CheckboxRoot({ className, color = 'primary', ...props }: CheckboxRootProps) {
+  return <Root className={cx(checkboxRootStyles, className)} data-color={color} data-slot='checkbox' {...props} />;
+}
+
+// Checkbox
+type CheckboxProps = CheckboxRootProps;
+function Checkbox({ className, ...props }: CheckboxProps) {
   return (
-    <Root className={cx(checkboxStyles, className)} data-color={color} data-slot='checkbox' {...props}>
-      <Indicator className='grid place-content-center text-current' data-slot='checkbox-indicator'>
+    <CheckboxRoot {...props}>
+      <CheckboxIndicator>
         <svg
           aria-hidden='true'
           className='size-3.5'
@@ -54,10 +72,10 @@ function Checkbox({ className, color = 'primary', ...props }: CheckboxProps) {
             }}
           />
         </svg>
-      </Indicator>
-    </Root>
+      </CheckboxIndicator>
+    </CheckboxRoot>
   );
 }
 
-export { Checkbox };
-export type { CheckboxProps };
+export { Checkbox, CheckboxIndicator, CheckboxRoot };
+export type { CheckboxProps, CheckboxRootProps, CheckboxIndicatorProps };
