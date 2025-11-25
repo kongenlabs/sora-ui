@@ -9,7 +9,7 @@ import type { ComponentProps, ReactNode } from 'react';
 
 // Switch Thumb
 const switchThumbStyles = cx(
-  'absolute block rounded-2xs border-2 shadow-xs ring-0 transition-all duration-150',
+  'absolute block rounded-2xs border-2 shadow-xs ring-0 transition-all duration-150 bg-background',
 
   // Pilled variant
   'group-data-[variant=pilled]:pointer-events-none group-data-[variant=pilled]:size-4 group-data-[variant=pilled]:-translate-y-0.25',
@@ -28,25 +28,14 @@ const switchThumbStyles = cx(
   // 'group-data-[variant=slider]:group-active:data-[state=checked]:translate-y-0',
   // 'group-data-[variant=slider]:group-active:data-[state=unchecked]:translate-y-0',
 
-  // Accent
-  'group-data-[color=accent]:border-accent-border group-data-[color=accent]:shadow-accent-shadow',
-  'group-data-[color=accent]:data-[state=unchecked]:bg-accent-background',
-  'group-data-[color=accent]:data-[state=checked]:bg-accent-foreground',
-
   // Primary
-  'group-data-[color=primary]:border-primary-border group-data-[color=primary]:shadow-primary-shadow',
-  'group-data-[color=primary]:data-[state=unchecked]:bg-primary-background',
-  'group-data-[color=primary]:data-[state=checked]:bg-primary-foreground',
+  'group-data-[color=primary]:border-primary-border group-data-[color=primary]:shadow-primary-shadow group-data-[color=primary]:bg-primary',
 
   // Secondary
-  'group-data-[color=secondary]:border-secondary-border group-data-[color=secondary]:shadow-secondary-shadow',
-  'group-data-[color=secondary]:data-[state=unchecked]:bg-secondary-background',
-  'group-data-[color=secondary]:data-[state=checked]:bg-secondary-foreground',
+  'group-data-[color=secondary]:border-secondary-border group-data-[color=secondary]:shadow-secondary-shadow group-data-[color=secondary]:bg-secondary',
 
   // Tertiary
-  'group-data-[color=tertiary]:border-tertiary-border group-data-[color=tertiary]:shadow-tertiary-shadow',
-  'group-data-[color=tertiary]:data-[state=unchecked]:bg-tertiary-background',
-  'group-data-[color=tertiary]:data-[state=checked]:bg-tertiary-foreground',
+  'group-data-[color=tertiary]:border-tertiary-border group-data-[color=tertiary]:shadow-tertiary-shadow group-data-[color=tertiary]:bg-tertiary',
 );
 type SwitchThumbProps = RadixSwitchThumbProps & {
   children?: ReactNode;
@@ -67,17 +56,15 @@ const checkedLabelStyles = cx(
 
   // Pilled variant positioning and colors
   'group-data-[variant=pilled]:left-1.5',
-  'group-data-[variant=pilled]:group-data-[color=primary]:text-primary-foreground',
-  'group-data-[variant=pilled]:group-data-[color=secondary]:text-secondary-foreground',
-  'group-data-[variant=pilled]:group-data-[color=tertiary]:text-tertiary-foreground',
-  'group-data-[variant=pilled]:group-data-[color=accent]:text-accent-foreground',
+  'group-data-[variant=pilled]:group-data-[color=primary]:text-on-primary-container',
+  'group-data-[variant=pilled]:group-data-[color=secondary]:text-on-secondary-container',
+  'group-data-[variant=pilled]:group-data-[color=tertiary]:text-on-tertiary-container',
 
   // Slider variant positioning and colors
   'group-data-[variant=slider]:left-1/2 group-data-[variant=slider]:-translate-x-1/2',
-  'group-data-[variant=slider]:group-data-[color=primary]:text-primary-background',
-  'group-data-[variant=slider]:group-data-[color=secondary]:text-secondary-background',
-  'group-data-[variant=slider]:group-data-[color=tertiary]:text-tertiary-background',
-  'group-data-[variant=slider]:group-data-[color=accent]:text-accent-background',
+  'group-data-[variant=slider]:group-data-[color=primary]:text-on-primary',
+  'group-data-[variant=slider]:group-data-[color=secondary]:text-on-secondary',
+  'group-data-[variant=slider]:group-data-[color=tertiary]:text-on-tertiary',
 );
 
 const uncheckedLabelStyles = cx(
@@ -87,17 +74,15 @@ const uncheckedLabelStyles = cx(
 
   // Pilled variant positioning and colors
   'group-data-[variant=pilled]:right-1.5',
-  'group-data-[variant=pilled]:group-data-[color=primary]:text-primary-background',
-  'group-data-[variant=pilled]:group-data-[color=secondary]:text-secondary-background',
-  'group-data-[variant=pilled]:group-data-[color=tertiary]:text-tertiary-background',
-  'group-data-[variant=pilled]:group-data-[color=accent]:text-accent-background',
+  'group-data-[variant=pilled]:group-data-[color=primary]:text-on-primary-container',
+  'group-data-[variant=pilled]:group-data-[color=secondary]:text-on-secondary-container',
+  'group-data-[variant=pilled]:group-data-[color=tertiary]:text-on-tertiary-container',
 
   // Slider variant positioning and colors
   'group-data-[variant=slider]:left-1/2 group-data-[variant=slider]:-translate-x-1/2',
-  'group-data-[variant=slider]:group-data-[color=primary]:text-primary-foreground',
-  'group-data-[variant=slider]:group-data-[color=secondary]:text-secondary-foreground',
-  'group-data-[variant=slider]:group-data-[color=tertiary]:text-tertiary-foreground',
-  'group-data-[variant=slider]:group-data-[color=accent]:text-accent-foreground',
+  'group-data-[variant=slider]:group-data-[color=primary]:text-on-primary',
+  'group-data-[variant=slider]:group-data-[color=secondary]:text-on-secondary',
+  'group-data-[variant=slider]:group-data-[color=tertiary]:text-on-tertiary',
 );
 
 type SwitchLabelProps = ComponentProps<'span'> & {
@@ -131,32 +116,23 @@ const switchRootStyles = cx(
   // Slider variant dimensions
   'data-[variant=slider]:h-2 data-[variant=slider]:w-10',
 
-  // Accent
-  'data-[color=accent]:border-accent-border',
-  'data-[color=accent]:focus-visible:outline-accent-border/60',
-  'data-[color=accent]:data-[state=checked]:bg-accent-background',
-  'data-[color=accent]:data-[state=unchecked]:bg-accent-foreground',
-
   // Primary
   'data-[color=primary]:border-primary-border',
   'data-[color=primary]:focus-visible:outline-primary-border/60',
-  'data-[color=primary]:data-[state=checked]:bg-primary-background',
-  'data-[color=primary]:data-[state=unchecked]:bg-primary-foreground',
+  'data-[color=primary]:data-[state=checked]:bg-primary-container',
 
   // Secondary
   'data-[color=secondary]:border-secondary-border',
   'data-[color=secondary]:focus-visible:outline-secondary-border/60',
-  'data-[color=secondary]:data-[state=checked]:bg-secondary-background',
-  'data-[color=secondary]:data-[state=unchecked]:bg-secondary-foreground',
+  'data-[color=secondary]:data-[state=checked]:bg-secondary-container',
 
   // Tertiary
   'data-[color=tertiary]:border-tertiary-border',
   'data-[color=tertiary]:focus-visible:outline-tertiary-border/60',
-  'data-[color=tertiary]:data-[state=checked]:bg-tertiary-background',
-  'data-[color=tertiary]:data-[state=unchecked]:bg-tertiary-foreground',
+  'data-[color=tertiary]:data-[state=checked]:bg-tertiary-container',
 );
 type SwitchRootProps = RadixSwitchProps & {
-  color?: 'primary' | 'secondary' | 'tertiary' | 'accent';
+  color?: 'primary' | 'secondary' | 'tertiary';
   variant?: 'pilled' | 'slider';
 };
 
