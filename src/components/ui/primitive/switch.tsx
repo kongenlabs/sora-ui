@@ -9,17 +9,24 @@ import type { ComponentProps, ReactNode } from 'react';
 
 // Switch Thumb
 const switchThumbStyles = cx(
-  '-translate-y-0.5 absolute block rounded-2xs border-2 shadow-sm ring-0 transition-all duration-150',
+  'absolute block rounded-2xs border-2 shadow-xs ring-0 transition-all duration-150',
 
-  // Pilled variant (v1 style)
-  'group-data-[variant=pilled]:pointer-events-none group-data-[variant=pilled]:size-4',
+  // Pilled variant
+  'group-data-[variant=pilled]:pointer-events-none group-data-[variant=pilled]:size-4 group-data-[variant=pilled]:-translate-y-0.25',
   'group-data-[variant=pilled]:data-[state=checked]:-translate-x-full group-data-[variant=pilled]:data-[state=checked]:left-[calc(100%-2px)]',
   'group-data-[variant=pilled]:data-[state=unchecked]:left-0.5 group-data-[variant=pilled]:data-[state=unchecked]:translate-x-0',
 
-  // Slider variant (v2 style)
-  'group-data-[variant=slider]:size-6',
+  // Slider variant
+  'group-data-[variant=slider]:size-6 group-data-[variant=slider]:-translate-y-0.5',
   'group-data-[variant=slider]:data-[state=checked]:-translate-x-3/4 group-data-[variant=slider]:data-[state=checked]:left-full',
   'group-data-[variant=slider]:data-[state=unchecked]:left-0 group-data-[variant=slider]:data-[state=unchecked]:-translate-x-1/4',
+
+  // Thumb press animation - uncomment to enable
+  // 'group-active:shadow-none',
+  // 'group-data-[variant=pilled]:group-active:data-[state=checked]:translate-y-0.25',
+  // 'group-data-[variant=pilled]:group-active:data-[state=unchecked]:translate-y-0.25',
+  // 'group-data-[variant=slider]:group-active:data-[state=checked]:translate-y-0',
+  // 'group-data-[variant=slider]:group-active:data-[state=unchecked]:translate-y-0',
 
   // Accent
   'group-data-[color=accent]:border-accent-border group-data-[color=accent]:shadow-accent-shadow',
@@ -119,7 +126,7 @@ const switchRootStyles = cx(
   '[&_svg]:size-4',
 
   // Pilled variant dimensions
-  'data-[variant=pilled]:h-7 data-[variant=pilled]:w-12',
+  'data-[variant=pilled]:h-6.5 data-[variant=pilled]:w-12',
 
   // Slider variant dimensions
   'data-[variant=slider]:h-2 data-[variant=slider]:w-10',
