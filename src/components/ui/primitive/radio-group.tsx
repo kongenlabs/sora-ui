@@ -8,10 +8,11 @@ import {
 } from '@radix-ui/react-radio-group';
 import { cx } from 'class-variance-authority';
 import { CircleIcon } from 'lucide-react';
+import type { Color } from '../types';
 
 // Radio Group
 type RadioGroupRootProps = RadixRadioGroupProps & {
-  color?: 'primary' | 'secondary' | 'tertiary';
+  color?: Color;
 };
 function RadioGroupRoot({ className, color = 'primary', ...props }: RadioGroupRootProps) {
   return <Root className={cx('group grid gap-3', className)} data-color={color} data-slot='radio-group' {...props} />;

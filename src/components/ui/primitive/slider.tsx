@@ -9,6 +9,7 @@ import {
   Track,
 } from '@radix-ui/react-slider';
 import { cx } from 'class-variance-authority';
+import type { Color } from '../types';
 
 // Slider Root
 const sliderRootStyles = cx(
@@ -17,7 +18,7 @@ const sliderRootStyles = cx(
   'data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col',
 );
 type SliderRootProps = RadixSliderProps & {
-  color?: 'primary' | 'secondary' | 'tertiary';
+  color?: Color;
 };
 function SliderRoot({ className, color = 'primary', ...props }: SliderRootProps) {
   return <Root className={cx(sliderRootStyles, className)} data-color={color} data-slot='slider-root' {...props} />;

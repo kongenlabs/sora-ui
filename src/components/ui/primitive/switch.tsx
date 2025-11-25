@@ -6,6 +6,7 @@ import {
 } from '@radix-ui/react-switch';
 import { cx } from 'class-variance-authority';
 import type { ComponentProps, ReactNode } from 'react';
+import type { Color } from '../types';
 
 // Switch Thumb
 const switchThumbStyles = cx(
@@ -132,7 +133,7 @@ const switchRootStyles = cx(
   'data-[color=tertiary]:data-[state=checked]:bg-tertiary-container',
 );
 type SwitchRootProps = RadixSwitchProps & {
-  color?: 'primary' | 'secondary' | 'tertiary';
+  color?: Color;
   variant?: 'pilled' | 'slider';
 };
 

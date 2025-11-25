@@ -1,5 +1,6 @@
 import { cx } from 'class-variance-authority';
 import type { ComponentProps } from 'react';
+import type { Color } from '../types';
 import {
   Tooltip,
   TooltipContent,
@@ -43,7 +44,7 @@ const buttonStyles = cx(
   'data-[color=tertiary]:focus-visible:outline-tertiary-border/60',
 );
 type ButtonProps = ComponentProps<'button'> & {
-  color?: 'primary' | 'secondary' | 'tertiary';
+  color?: Color;
   size?: 'sm' | 'md' | 'lg';
   icon?: boolean;
   tooltip?: string;

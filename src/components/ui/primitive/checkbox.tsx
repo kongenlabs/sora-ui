@@ -5,6 +5,7 @@ import {
   Root,
 } from '@radix-ui/react-checkbox';
 import { cx } from 'class-variance-authority';
+import type { Color } from '../types';
 
 // Checkbox Indicator
 type CheckboxIndicatorProps = RadixCheckboxIndicatorProps;
@@ -35,7 +36,7 @@ const checkboxRootStyles = cx(
   'data-[color=tertiary]:data-[state=checked]:border-tertiary-border data-[color=tertiary]:data-[state=checked]:bg-tertiary data-[color=tertiary]:data-[state=checked]:text-on-tertiary',
 );
 type CheckboxRootProps = RadixCheckboxProps & {
-  color?: 'primary' | 'secondary' | 'tertiary';
+  color?: Color;
 };
 function CheckboxRoot({ className, color = 'primary', ...props }: CheckboxRootProps) {
   return <Root className={cx(checkboxRootStyles, className)} data-color={color} data-slot='checkbox' {...props} />;
