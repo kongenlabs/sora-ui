@@ -2,57 +2,45 @@
 @custom-variant light (&:is(.light *));
 
 .light {
-  --color-background: hsl(255 100% 100%);
-  --color-foreground: hsl(255 100% 0%);
+  --color-background: var(--color-white);
+  --color-foreground: var(--color-black);
 
-  --color-border: hsl(234 15.6% 25.1%);
-  --color-shadow: hsl(240 15.4% 5.1%);
+  --color-border: var(--color-neutral-700);
+  --color-shadow: var(--color-neutral-800);
 }
 
 .dark {
-  --color-background: hsl(255 100% 0%);
-  --color-foreground: hsl(255 100% 100%);
+  --color-background: var(--color-black);
+  --color-foreground: var(--color-white);
 
-  --color-border: hsl(234 15.6% 25.1%);
-  --color-shadow: hsl(235 15.8% 14.9%);
+  --color-border: var(--color-neutral-700);
+  --color-shadow: var(--color-neutral-800);
 }
 
 @theme {
-  --color-neutral-50: hsl(233.3 15.8% 88.8%);
-  --color-neutral-100: hsl(233.3 16.1% 78%);
-  --color-neutral-200: hsl(234.9 16% 57.1%);
-  --color-neutral-300: hsl(233.8 16% 35.5%);
-  --color-neutral-400: hsl(232.8 16.3% 30%);
-  --color-neutral-500: hsl(234 15.6% 25.1%);
-  --color-neutral-600: hsl(232.5 15.7% 20%);
-  --color-neutral-700: hsl(235 15.8% 14.9%);
-  --color-neutral-800: hsl(233.3 17.6% 10%);
-  --color-neutral-900: hsl(240 15.4% 5.1%);
-  --color-neutral-950: hsl(220 20% 2.9%);
-
   --color-background: var(--color-background);
   --color-foreground: var(--color-foreground);
 
-  --color-primary: hsl(196.9 97% 38.8%);
-  --color-on-primary: hsl(196.4 95.7% 91%);
-  --color-primary-container: hsl(197.3 96.7% 64.1%);
-  --color-on-primary-container: hsl(196.9 97% 25.9%);
-  --color-primary-border: hsl(197.1 96.1% 20%);
-  --color-primary-shadow: hsl(196.9 97% 12.9%);
+  --color-primary: var(--color-sky-400);
+  --color-on-primary: var(--color-sky-50);
+  --color-primary-container: var(--color-sky-200);
+  --color-on-primary-container: var(--color-sky-600);
+  --color-primary-border: var(--color-sky-700);
+  --color-primary-shadow: var(--color-sky-800);
 
-  --color-secondary: hsl(232.8 16.3% 30%);
-  --color-on-secondary: hsl(233.3 15.8% 88.8%);
-  --color-secondary-container: hsl(234.9 16% 57.1%);
-  --color-on-secondary-container: hsl(232.5 15.7% 20%);
-  --color-secondary-border: hsl(235 15.8% 14.9%);
-  --color-secondary-shadow: hsl(233.3 17.6% 10%);
+  --color-secondary: var(--color-slate-400);
+  --color-on-secondary: var(--color-slate-50);
+  --color-secondary-container: var(--color-slate-200);
+  --color-on-secondary-container: var(--color-slate-600);
+  --color-secondary-border: var(--color-slate-700);
+  --color-secondary-shadow: var(--color-slate-800);
 
-  --color-tertiary: hsl(34.9 76.7% 42.2%);
-  --color-on-tertiary: hsl(34.8 75.6% 92%);
-  --color-tertiary-container: hsl(34.7 76.9% 66.1%);
-  --color-on-tertiary-container: hsl(34.9 77.5% 27.8%);
-  --color-tertiary-border: hsl(34.7 77.6% 21%);
-  --color-tertiary-shadow: hsl(34.9 77.5% 13.9%);
+  --color-tertiary: var(--color-amber-400);
+  --color-on-tertiary: var(--color-amber-50);
+  --color-tertiary-container: var(--color-amber-200);
+  --color-on-tertiary-container: var(--color-amber-600);
+  --color-tertiary-border: var(--color-amber-700);
+  --color-tertiary-shadow: var(--color-amber-800);
 
   --color-border: var(--color-border);
   --color-shadow: var(--color-shadow);

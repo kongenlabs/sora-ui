@@ -35,17 +35,17 @@ const radioGroupItemStyles = cx(
   'data-[state=checked]:pointer-events-none',
 
   // Primary color
-  'group-data-[color=primary]:border-primary-border group-data-[color=primary]:shadow-primary-shadow group-data-[color=primary]:text-primary',
+  'group-data-[color=primary]:border-primary-border group-data-[color=primary]:shadow-primary-shadow group-data-[color=primary]:bg-primary-container group-data-[color=primary]:text-primary',
   'group-data-[color=primary]:focus-visible:outline-primary-border/60',
   'group-data-[color=primary]:data-[state=checked]:border-primary-border',
 
   // Secondary color
-  'group-data-[color=secondary]:border-secondary-border group-data-[color=secondary]:shadow-secondary-shadow group-data-[color=secondary]:text-secondary',
+  'group-data-[color=secondary]:border-secondary-border group-data-[color=secondary]:shadow-secondary-shadow group-data-[color=secondary]:bg-secondary-container group-data-[color=secondary]:text-secondary',
   'group-data-[color=secondary]:focus-visible:outline-secondary-border/60',
   'group-data-[color=secondary]:data-[state=checked]:border-secondary-border',
 
   // Tertiary color
-  'group-data-[color=tertiary]:border-tertiary-border group-data-[color=tertiary]:shadow-tertiary-shadow group-data-[color=tertiary]:text-tertiary',
+  'group-data-[color=tertiary]:border-tertiary-border group-data-[color=tertiary]:shadow-tertiary-shadow group-data-[color=tertiary]:bg-tertiary-container group-data-[color=tertiary]:text-tertiary',
   'group-data-[color=tertiary]:focus-visible:outline-tertiary-border/60',
   'group-data-[color=tertiary]:data-[state=checked]:border-tertiary-border',
 );

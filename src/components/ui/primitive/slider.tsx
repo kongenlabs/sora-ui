@@ -31,13 +31,13 @@ const sliderTrackStyles = cx(
   'data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2',
 
   // Primary color
-  'group-data-[color=primary]:border-primary-border',
+  'group-data-[color=primary]:border-primary-border group-data-[color=primary]:bg-primary-container',
 
   // Secondary color
-  'group-data-[color=secondary]:border-secondary-border',
+  'group-data-[color=secondary]:border-secondary-border group-data-[color=secondary]:bg-secondary-container',
 
   // Tertiary color
-  'group-data-[color=tertiary]:border-tertiary-border',
+  'group-data-[color=tertiary]:border-tertiary-border group-data-[color=tertiary]:bg-tertiary-container',
 );
 type SliderTrackProps = RadixSliderTrackProps;
 function SliderTrack({ className, ...props }: SliderTrackProps) {
@@ -51,13 +51,13 @@ const sliderRangeStyles = cx(
   'data-[orientation=vertical]:w-full',
 
   // Primary color
-  'group-data-[color=primary]:bg-primary-container',
+  'group-data-[color=primary]:bg-primary',
 
   // Secondary color
-  'group-data-[color=secondary]:bg-secondary-container',
+  'group-data-[color=secondary]:bg-secondary',
 
   // Tertiary color
-  'group-data-[color=tertiary]:bg-tertiary-container',
+  'group-data-[color=tertiary]:bg-tertiary',
 );
 type SliderRangeProps = RadixSliderRangeProps;
 function SliderRange({ className, ...props }: SliderRangeProps) {
