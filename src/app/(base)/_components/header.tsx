@@ -1,10 +1,10 @@
 // TODO: Maybe need to update this component with using Container/Box styled components
 
 import { GithubIcon } from 'lucide-react';
-import Link from 'next/link';
 import { LogoWithTextHorizontal } from '@/components/ui/common/logo';
 import { ThemeToggleSwitch } from '@/components/ui/common/theme-toggle-switch';
 import { Button } from '@/components/ui/primitive/button';
+import { A } from '@/components/ui/primitive/typography';
 
 const HEADER_NAVIGATION_LINKS = [
   {
@@ -33,20 +33,20 @@ export default function BaseHeader() {
         <ul className='flex items-center justify-center gap-8'>
           {HEADER_NAVIGATION_LINKS.map((link) => (
             <li key={link.href}>
-              <Link className='font-medium hover:text-on-primary-container' href={link.href}>
+              <A className='font-medium hover:text-on-primary-container' href={link.href}>
                 {link.label}
-              </Link>
+              </A>
             </li>
           ))}
         </ul>
       </nav>
       <div className='flex gap-2'>
         {HEADER_SOCIAL_LINKS.map((link) => (
-          <Link href={link.href} key={link.href} target='_blank'>
+          <A href={link.href} key={link.href} target='_blank'>
             <Button icon size='sm'>
               <link.icon />
             </Button>
-          </Link>
+          </A>
         ))}
       </div>
       <ThemeToggleSwitch />

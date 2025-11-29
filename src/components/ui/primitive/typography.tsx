@@ -2,74 +2,384 @@ import { cx } from 'class-variance-authority';
 import type { LinkProps } from 'next/link';
 import Link from 'next/link';
 import type { ComponentProps } from 'react';
+import type { Color } from '../types';
 
-export function H1({ className, ...props }: ComponentProps<'h1'>) {
-  return <h1 className={cx('font-extrabold font-sans text-h1 leading-tight tracking-tighter', className)} {...props} />;
-}
+type TypographyVariantProps = {
+  variant?: 'default' | 'highlight';
+  color?: Color | undefined;
+};
 
-export function H2({ className, ...props }: ComponentProps<'h2'>) {
-  return <h2 className={cx('font-bold font-sans text-h2 leading-tight tracking-tight', className)} {...props} />;
-}
-
-export function H3({ className, ...props }: ComponentProps<'h3'>) {
-  return <h3 className={cx('font-sans font-semibold text-h3 leading-snug tracking-tight', className)} {...props} />;
-}
-
-export function H4({ className, ...props }: ComponentProps<'h4'>) {
-  return <h4 className={cx('font-sans font-semibold text-h4 leading-snug tracking-normal', className)} {...props} />;
-}
-
-export function H5({ className, ...props }: ComponentProps<'h5'>) {
-  return <h5 className={cx('font-medium font-sans text-h5 leading-normal tracking-normal', className)} {...props} />;
-}
-
-export function H6({ className, ...props }: ComponentProps<'h6'>) {
-  return <h6 className={cx('font-medium font-sans text-h6 leading-normal tracking-wide', className)} {...props} />;
-}
-
-export function Paragraph({ className, ...props }: ComponentProps<'p'>) {
-  return <p className={cx('font-serif text-p leading-relaxed tracking-normal', className)} {...props} />;
-}
-
-export function A({ className, ...props }: LinkProps & ComponentProps<'a'>) {
+type H1Props = ComponentProps<'h1'> & TypographyVariantProps;
+function H1({ className, variant = 'default', color, ...props }: H1Props) {
   return (
-    <Link
-      className={cx('font-serif text-a leading-relaxed tracking-normal', 'hover:underline', className)}
+    <h1
+      className={cx(
+        'w-fit font-extrabold font-sans text-h1-sm leading-tight tracking-tighter md:text-h1-md xl:text-h1-lg',
+        'data-[variant=highlight]:rounded-xl data-[variant=highlight]:border-2 data-[variant=highlight]:px-5',
+        'data-[color=primary]:data-[variant=default]:text-primary',
+        'data-[color=primary]:data-[variant=highlight]:border-primary-border data-[color=primary]:data-[variant=highlight]:bg-primary data-[color=primary]:data-[variant=highlight]:text-on-primary',
+        'data-[color=secondary]:data-[variant=default]:text-secondary',
+        'data-[color=secondary]:data-[variant=highlight]:border-secondary-border data-[color=secondary]:data-[variant=highlight]:bg-secondary data-[color=secondary]:data-[variant=highlight]:text-on-secondary',
+        'data-[color=tertiary]:data-[variant=default]:text-tertiary',
+        'data-[color=tertiary]:data-[variant=highlight]:border-tertiary-border data-[color=tertiary]:data-[variant=highlight]:bg-tertiary data-[color=tertiary]:data-[variant=highlight]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-variant={variant}
       {...props}
     />
   );
 }
 
-export function Strong({ className, ...props }: ComponentProps<'strong'>) {
-  return <strong className={cx('text-strong leading-relaxed tracking-normal', className)} {...props} />;
-}
-
-export function Emphasis({ className, ...props }: ComponentProps<'em'>) {
-  return <em className={cx('text-em leading-relaxed tracking-normal', className)} {...props} />;
-}
-
-export function Small({ className, ...props }: ComponentProps<'small'>) {
-  return <small className={cx('text-small leading-relaxed tracking-wide', className)} {...props} />;
-}
-
-export function Blockquote({ className, ...props }: ComponentProps<'blockquote'>) {
+type H2Props = ComponentProps<'h2'> & TypographyVariantProps;
+function H2({ className, variant = 'default', color, ...props }: H2Props) {
   return (
-    <blockquote className={cx('font-serif text-blockquote leading-relaxed tracking-tight', className)} {...props} />
+    <h2
+      className={cx(
+        'w-fit font-bold font-sans text-h2-sm leading-tight tracking-tight md:text-h2-md xl:text-h2-lg',
+        'data-[variant=highlight]:rounded-xl data-[variant=highlight]:border-2 data-[variant=highlight]:px-4',
+        'data-[color=primary]:data-[variant=default]:text-primary',
+        'data-[color=primary]:data-[variant=highlight]:border-primary-border data-[color=primary]:data-[variant=highlight]:bg-primary data-[color=primary]:data-[variant=highlight]:text-on-primary',
+        'data-[color=secondary]:data-[variant=default]:text-secondary',
+        'data-[color=secondary]:data-[variant=highlight]:border-secondary-border data-[color=secondary]:data-[variant=highlight]:bg-secondary data-[color=secondary]:data-[variant=highlight]:text-on-secondary',
+        'data-[color=tertiary]:data-[variant=default]:text-tertiary',
+        'data-[color=tertiary]:data-[variant=highlight]:border-tertiary-border data-[color=tertiary]:data-[variant=highlight]:bg-tertiary data-[color=tertiary]:data-[variant=highlight]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-variant={variant}
+      {...props}
+    />
   );
 }
 
-export function Pre({ className, ...props }: ComponentProps<'pre'>) {
-  return <pre className={cx('font-mono text-pre leading-relaxed tracking-tight', className)} {...props} />;
+type H3Props = ComponentProps<'h3'> & TypographyVariantProps;
+function H3({ className, variant = 'default', color, ...props }: H3Props) {
+  return (
+    <h3
+      className={cx(
+        'w-fit font-sans font-semibold text-h3-sm leading-snug tracking-tight md:text-h3-md xl:text-h3-lg',
+        'data-[variant=highlight]:rounded-lg data-[variant=highlight]:border-2 data-[variant=highlight]:px-3',
+        'data-[color=primary]:data-[variant=default]:text-primary',
+        'data-[color=primary]:data-[variant=highlight]:border-primary-border data-[color=primary]:data-[variant=highlight]:bg-primary data-[color=primary]:data-[variant=highlight]:text-on-primary',
+        'data-[color=secondary]:data-[variant=default]:text-secondary',
+        'data-[color=secondary]:data-[variant=highlight]:border-secondary-border data-[color=secondary]:data-[variant=highlight]:bg-secondary data-[color=secondary]:data-[variant=highlight]:text-on-secondary',
+        'data-[color=tertiary]:data-[variant=default]:text-tertiary',
+        'data-[color=tertiary]:data-[variant=highlight]:border-tertiary-border data-[color=tertiary]:data-[variant=highlight]:bg-tertiary data-[color=tertiary]:data-[variant=highlight]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-variant={variant}
+      {...props}
+    />
+  );
 }
 
-export function Code({ className, ...props }: ComponentProps<'code'>) {
-  return <code className={cx('font-mono text-code leading-relaxed tracking-tight', className)} {...props} />;
+type H4Props = ComponentProps<'h4'> & TypographyVariantProps;
+function H4({ className, variant = 'default', color, ...props }: H4Props) {
+  return (
+    <h4
+      className={cx(
+        'w-fit font-sans font-semibold text-h4-sm leading-snug tracking-normal md:text-h4-md xl:text-h4-lg',
+        'data-[variant=highlight]:rounded-lg data-[variant=highlight]:border-2 data-[variant=highlight]:px-3',
+        'data-[color=primary]:data-[variant=default]:text-primary',
+        'data-[color=primary]:data-[variant=highlight]:border-primary-border data-[color=primary]:data-[variant=highlight]:bg-primary data-[color=primary]:data-[variant=highlight]:text-on-primary',
+        'data-[color=secondary]:data-[variant=default]:text-secondary',
+        'data-[color=secondary]:data-[variant=highlight]:border-secondary-border data-[color=secondary]:data-[variant=highlight]:bg-secondary data-[color=secondary]:data-[variant=highlight]:text-on-secondary',
+        'data-[color=tertiary]:data-[variant=default]:text-tertiary',
+        'data-[color=tertiary]:data-[variant=highlight]:border-tertiary-border data-[color=tertiary]:data-[variant=highlight]:bg-tertiary data-[color=tertiary]:data-[variant=highlight]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-variant={variant}
+      {...props}
+    />
+  );
 }
 
-export function Kbd({ className, ...props }: ComponentProps<'kbd'>) {
-  return <kbd className={cx('font-mono text-kbd leading-relaxed tracking-wide', className)} {...props} />;
+type H5Props = ComponentProps<'h5'> & TypographyVariantProps;
+function H5({ className, variant = 'default', color, ...props }: H5Props) {
+  return (
+    <h5
+      className={cx(
+        'w-fit font-medium font-sans text-h5-sm leading-normal tracking-normal md:text-h5-md xl:text-h5-lg',
+        'data-[variant=highlight]:rounded-md data-[variant=highlight]:border-2 data-[variant=highlight]:px-2',
+        'data-[color=primary]:data-[variant=default]:text-primary',
+        'data-[color=primary]:data-[variant=highlight]:border-primary-border data-[color=primary]:data-[variant=highlight]:bg-primary data-[color=primary]:data-[variant=highlight]:text-on-primary',
+        'data-[color=secondary]:data-[variant=default]:text-secondary',
+        'data-[color=secondary]:data-[variant=highlight]:border-secondary-border data-[color=secondary]:data-[variant=highlight]:bg-secondary data-[color=secondary]:data-[variant=highlight]:text-on-secondary',
+        'data-[color=tertiary]:data-[variant=default]:text-tertiary',
+        'data-[color=tertiary]:data-[variant=highlight]:border-tertiary-border data-[color=tertiary]:data-[variant=highlight]:bg-tertiary data-[color=tertiary]:data-[variant=highlight]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-variant={variant}
+      {...props}
+    />
+  );
 }
 
-export function Figcaption({ className, ...props }: ComponentProps<'figcaption'>) {
-  return <figcaption className={cx('font-serif text-figcaption tracking-normal', className)} {...props} />;
+type H6Props = ComponentProps<'h6'> & TypographyVariantProps;
+function H6({ className, variant = 'default', color, ...props }: H6Props) {
+  return (
+    <h6
+      className={cx(
+        'w-fit font-medium font-sans text-h6-sm leading-normal tracking-wide md:text-h6-md xl:text-h6-lg',
+        'data-[variant=highlight]:rounded-md data-[variant=highlight]:border-2 data-[variant=highlight]:px-2',
+        'data-[color=primary]:data-[variant=default]:text-primary',
+        'data-[color=primary]:data-[variant=highlight]:border-primary-border data-[color=primary]:data-[variant=highlight]:bg-primary data-[color=primary]:data-[variant=highlight]:text-on-primary',
+        'data-[color=secondary]:data-[variant=default]:text-secondary',
+        'data-[color=secondary]:data-[variant=highlight]:border-secondary-border data-[color=secondary]:data-[variant=highlight]:bg-secondary data-[color=secondary]:data-[variant=highlight]:text-on-secondary',
+        'data-[color=tertiary]:data-[variant=default]:text-tertiary',
+        'data-[color=tertiary]:data-[variant=highlight]:border-tertiary-border data-[color=tertiary]:data-[variant=highlight]:bg-tertiary data-[color=tertiary]:data-[variant=highlight]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-variant={variant}
+      {...props}
+    />
+  );
 }
+
+type ParagraphProps = ComponentProps<'p'> & TypographyVariantProps;
+function Paragraph({ className, variant = 'default', color, ...props }: ParagraphProps) {
+  return (
+    <p
+      className={cx(
+        'w-fit font-serif text-p leading-relaxed tracking-normal',
+        'data-[variant=highlight]:rounded-md data-[variant=highlight]:border-2 data-[variant=highlight]:px-2 data-[variant=highlight]:py-1',
+        'data-[color=primary]:data-[variant=default]:text-primary',
+        'data-[color=primary]:data-[variant=highlight]:border-primary-border data-[color=primary]:data-[variant=highlight]:bg-primary data-[color=primary]:data-[variant=highlight]:text-on-primary',
+        'data-[color=secondary]:data-[variant=default]:text-secondary',
+        'data-[color=secondary]:data-[variant=highlight]:border-secondary-border data-[color=secondary]:data-[variant=highlight]:bg-secondary data-[color=secondary]:data-[variant=highlight]:text-on-secondary',
+        'data-[color=tertiary]:data-[variant=default]:text-tertiary',
+        'data-[color=tertiary]:data-[variant=highlight]:border-tertiary-border data-[color=tertiary]:data-[variant=highlight]:bg-tertiary data-[color=tertiary]:data-[variant=highlight]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-variant={variant}
+      {...props}
+    />
+  );
+}
+
+type AProps = LinkProps & ComponentProps<'a'> & TypographyVariantProps;
+function A({ className, variant = 'default', color, ...props }: AProps) {
+  return (
+    <Link
+      className={cx(
+        'w-fit font-serif text-a leading-relaxed tracking-normal',
+        'hover:underline',
+        'data-[variant=highlight]:rounded-md data-[variant=highlight]:border-2 data-[variant=highlight]:px-2 data-[variant=highlight]:py-1',
+        'data-[color=primary]:data-[variant=default]:text-primary',
+        'data-[color=primary]:data-[variant=highlight]:border-primary-border data-[color=primary]:data-[variant=highlight]:bg-primary data-[color=primary]:data-[variant=highlight]:text-on-primary',
+        'data-[color=secondary]:data-[variant=default]:text-secondary',
+        'data-[color=secondary]:data-[variant=highlight]:border-secondary-border data-[color=secondary]:data-[variant=highlight]:bg-secondary data-[color=secondary]:data-[variant=highlight]:text-on-secondary',
+        'data-[color=tertiary]:data-[variant=default]:text-tertiary',
+        'data-[color=tertiary]:data-[variant=highlight]:border-tertiary-border data-[color=tertiary]:data-[variant=highlight]:bg-tertiary data-[color=tertiary]:data-[variant=highlight]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-variant={variant}
+      {...props}
+    />
+  );
+}
+
+type StrongProps = ComponentProps<'strong'> & TypographyVariantProps;
+function Strong({ className, variant = 'default', color, ...props }: StrongProps) {
+  return (
+    <strong
+      className={cx(
+        'w-fit text-strong leading-relaxed tracking-normal',
+        'data-[variant=highlight]:rounded data-[variant=highlight]:border-2 data-[variant=highlight]:px-1.5 data-[variant=highlight]:py-0.5',
+        'data-[color=primary]:data-[variant=default]:text-primary',
+        'data-[color=primary]:data-[variant=highlight]:border-primary-border data-[color=primary]:data-[variant=highlight]:bg-primary data-[color=primary]:data-[variant=highlight]:text-on-primary',
+        'data-[color=secondary]:data-[variant=default]:text-secondary',
+        'data-[color=secondary]:data-[variant=highlight]:border-secondary-border data-[color=secondary]:data-[variant=highlight]:bg-secondary data-[color=secondary]:data-[variant=highlight]:text-on-secondary',
+        'data-[color=tertiary]:data-[variant=default]:text-tertiary',
+        'data-[color=tertiary]:data-[variant=highlight]:border-tertiary-border data-[color=tertiary]:data-[variant=highlight]:bg-tertiary data-[color=tertiary]:data-[variant=highlight]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-variant={variant}
+      {...props}
+    />
+  );
+}
+
+type EmphasisProps = ComponentProps<'em'> & TypographyVariantProps;
+function Emphasis({ className, variant = 'default', color, ...props }: EmphasisProps) {
+  return (
+    <em
+      className={cx(
+        'w-fit text-em leading-relaxed tracking-normal',
+        'data-[variant=highlight]:rounded data-[variant=highlight]:border-2 data-[variant=highlight]:px-1.5 data-[variant=highlight]:py-0.5',
+        'data-[color=primary]:data-[variant=default]:text-primary',
+        'data-[color=primary]:data-[variant=highlight]:border-primary-border data-[color=primary]:data-[variant=highlight]:bg-primary data-[color=primary]:data-[variant=highlight]:text-on-primary',
+        'data-[color=secondary]:data-[variant=default]:text-secondary',
+        'data-[color=secondary]:data-[variant=highlight]:border-secondary-border data-[color=secondary]:data-[variant=highlight]:bg-secondary data-[color=secondary]:data-[variant=highlight]:text-on-secondary',
+        'data-[color=tertiary]:data-[variant=default]:text-tertiary',
+        'data-[color=tertiary]:data-[variant=highlight]:border-tertiary-border data-[color=tertiary]:data-[variant=highlight]:bg-tertiary data-[color=tertiary]:data-[variant=highlight]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-variant={variant}
+      {...props}
+    />
+  );
+}
+
+type SmallProps = ComponentProps<'small'> & TypographyVariantProps;
+function Small({ className, variant = 'default', color, ...props }: SmallProps) {
+  return (
+    <small
+      className={cx(
+        'w-fit text-small-sm leading-relaxed tracking-wide md:text-small-md xl:text-small-lg',
+        'data-[variant=highlight]:rounded data-[variant=highlight]:border-2 data-[variant=highlight]:px-1.5 data-[variant=highlight]:py-0.5',
+        'data-[color=primary]:data-[variant=default]:text-primary',
+        'data-[color=primary]:data-[variant=highlight]:border-primary-border data-[color=primary]:data-[variant=highlight]:bg-primary data-[color=primary]:data-[variant=highlight]:text-on-primary',
+        'data-[color=secondary]:data-[variant=default]:text-secondary',
+        'data-[color=secondary]:data-[variant=highlight]:border-secondary-border data-[color=secondary]:data-[variant=highlight]:bg-secondary data-[color=secondary]:data-[variant=highlight]:text-on-secondary',
+        'data-[color=tertiary]:data-[variant=default]:text-tertiary',
+        'data-[color=tertiary]:data-[variant=highlight]:border-tertiary-border data-[color=tertiary]:data-[variant=highlight]:bg-tertiary data-[color=tertiary]:data-[variant=highlight]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-variant={variant}
+      {...props}
+    />
+  );
+}
+
+type BlockquoteProps = ComponentProps<'blockquote'> & TypographyVariantProps;
+function Blockquote({ className, variant = 'default', color, ...props }: BlockquoteProps) {
+  return (
+    <blockquote
+      className={cx(
+        'w-fit font-serif text-blockquote leading-relaxed tracking-tight',
+        'data-[variant=highlight]:rounded-md data-[variant=highlight]:border-2 data-[variant=highlight]:px-3 data-[variant=highlight]:py-2',
+        'data-[color=primary]:data-[variant=default]:text-primary',
+        'data-[color=primary]:data-[variant=highlight]:border-primary-border data-[color=primary]:data-[variant=highlight]:bg-primary data-[color=primary]:data-[variant=highlight]:text-on-primary',
+        'data-[color=secondary]:data-[variant=default]:text-secondary',
+        'data-[color=secondary]:data-[variant=highlight]:border-secondary-border data-[color=secondary]:data-[variant=highlight]:bg-secondary data-[color=secondary]:data-[variant=highlight]:text-on-secondary',
+        'data-[color=tertiary]:data-[variant=default]:text-tertiary',
+        'data-[color=tertiary]:data-[variant=highlight]:border-tertiary-border data-[color=tertiary]:data-[variant=highlight]:bg-tertiary data-[color=tertiary]:data-[variant=highlight]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-variant={variant}
+      {...props}
+    />
+  );
+}
+
+type PreProps = ComponentProps<'pre'> & TypographyVariantProps;
+function Pre({ className, variant = 'default', color, ...props }: PreProps) {
+  return (
+    <pre
+      className={cx(
+        'w-fit font-mono text-pre leading-relaxed tracking-tight',
+        'data-[variant=highlight]:rounded-md data-[variant=highlight]:border-2 data-[variant=highlight]:px-3 data-[variant=highlight]:py-2',
+        'data-[color=primary]:data-[variant=default]:text-primary',
+        'data-[color=primary]:data-[variant=highlight]:border-primary-border data-[color=primary]:data-[variant=highlight]:bg-primary data-[color=primary]:data-[variant=highlight]:text-on-primary',
+        'data-[color=secondary]:data-[variant=default]:text-secondary',
+        'data-[color=secondary]:data-[variant=highlight]:border-secondary-border data-[color=secondary]:data-[variant=highlight]:bg-secondary data-[color=secondary]:data-[variant=highlight]:text-on-secondary',
+        'data-[color=tertiary]:data-[variant=default]:text-tertiary',
+        'data-[color=tertiary]:data-[variant=highlight]:border-tertiary-border data-[color=tertiary]:data-[variant=highlight]:bg-tertiary data-[color=tertiary]:data-[variant=highlight]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-variant={variant}
+      {...props}
+    />
+  );
+}
+
+type CodeProps = ComponentProps<'code'> & TypographyVariantProps;
+function Code({ className, variant = 'default', color, ...props }: CodeProps) {
+  return (
+    <code
+      className={cx(
+        'w-fit font-mono text-code leading-relaxed tracking-tight',
+        'data-[variant=highlight]:rounded data-[variant=highlight]:border-2 data-[variant=highlight]:px-1.5 data-[variant=highlight]:py-0.5',
+        'data-[color=primary]:data-[variant=default]:text-primary',
+        'data-[color=primary]:data-[variant=highlight]:border-primary-border data-[color=primary]:data-[variant=highlight]:bg-primary data-[color=primary]:data-[variant=highlight]:text-on-primary',
+        'data-[color=secondary]:data-[variant=default]:text-secondary',
+        'data-[color=secondary]:data-[variant=highlight]:border-secondary-border data-[color=secondary]:data-[variant=highlight]:bg-secondary data-[color=secondary]:data-[variant=highlight]:text-on-secondary',
+        'data-[color=tertiary]:data-[variant=default]:text-tertiary',
+        'data-[color=tertiary]:data-[variant=highlight]:border-tertiary-border data-[color=tertiary]:data-[variant=highlight]:bg-tertiary data-[color=tertiary]:data-[variant=highlight]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-variant={variant}
+      {...props}
+    />
+  );
+}
+
+type KbdProps = ComponentProps<'kbd'> & TypographyVariantProps;
+function Kbd({ className, variant = 'default', color, ...props }: KbdProps) {
+  return (
+    <kbd
+      className={cx(
+        'w-fit font-mono text-kbd leading-relaxed tracking-wide',
+        'data-[variant=highlight]:rounded data-[variant=highlight]:border-2 data-[variant=highlight]:px-1.5 data-[variant=highlight]:py-0.5',
+        'data-[color=primary]:data-[variant=default]:text-primary',
+        'data-[color=primary]:data-[variant=highlight]:border-primary-border data-[color=primary]:data-[variant=highlight]:bg-primary data-[color=primary]:data-[variant=highlight]:text-on-primary',
+        'data-[color=secondary]:data-[variant=default]:text-secondary',
+        'data-[color=secondary]:data-[variant=highlight]:border-secondary-border data-[color=secondary]:data-[variant=highlight]:bg-secondary data-[color=secondary]:data-[variant=highlight]:text-on-secondary',
+        'data-[color=tertiary]:data-[variant=default]:text-tertiary',
+        'data-[color=tertiary]:data-[variant=highlight]:border-tertiary-border data-[color=tertiary]:data-[variant=highlight]:bg-tertiary data-[color=tertiary]:data-[variant=highlight]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-variant={variant}
+      {...props}
+    />
+  );
+}
+
+type FigcaptionProps = ComponentProps<'figcaption'> & TypographyVariantProps;
+function Figcaption({ className, variant = 'default', color, ...props }: FigcaptionProps) {
+  return (
+    <figcaption
+      className={cx(
+        'w-fit font-serif text-figcaption tracking-normal',
+        'data-[variant=highlight]:rounded data-[variant=highlight]:border-2 data-[variant=highlight]:px-1.5 data-[variant=highlight]:py-0.5',
+        'data-[color=primary]:data-[variant=default]:text-primary',
+        'data-[color=primary]:data-[variant=highlight]:border-primary-border data-[color=primary]:data-[variant=highlight]:bg-primary data-[color=primary]:data-[variant=highlight]:text-on-primary',
+        'data-[color=secondary]:data-[variant=default]:text-secondary',
+        'data-[color=secondary]:data-[variant=highlight]:border-secondary-border data-[color=secondary]:data-[variant=highlight]:bg-secondary data-[color=secondary]:data-[variant=highlight]:text-on-secondary',
+        'data-[color=tertiary]:data-[variant=default]:text-tertiary',
+        'data-[color=tertiary]:data-[variant=highlight]:border-tertiary-border data-[color=tertiary]:data-[variant=highlight]:bg-tertiary data-[color=tertiary]:data-[variant=highlight]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-variant={variant}
+      {...props}
+    />
+  );
+}
+
+export { H1, H2, H3, H4, H5, H6, Paragraph, A, Strong, Emphasis, Small, Blockquote, Pre, Code, Kbd, Figcaption };
+
+export type {
+  H1Props,
+  H2Props,
+  H3Props,
+  H4Props,
+  H5Props,
+  H6Props,
+  ParagraphProps,
+  AProps,
+  StrongProps,
+  EmphasisProps,
+  SmallProps,
+  BlockquoteProps,
+  PreProps,
+  CodeProps,
+  KbdProps,
+  FigcaptionProps,
+  TypographyVariantProps,
+};

@@ -1,14 +1,13 @@
-import {
-  Indicator,
-  type CheckboxIndicatorProps as RadixCheckboxIndicatorProps,
-  type CheckboxProps as RadixCheckboxProps,
-  Root,
+import type {
+  CheckboxIndicatorProps as RadixCheckboxIndicatorProps,
+  CheckboxProps as RadixCheckboxProps,
 } from '@radix-ui/react-checkbox';
+import { Indicator, Root } from '@radix-ui/react-checkbox';
 import { cx } from 'class-variance-authority';
 import type { Color } from '../types';
 
 // Checkbox Indicator
-type CheckboxIndicatorProps = RadixCheckboxIndicatorProps;
+type CheckboxIndicatorProps = RadixCheckboxIndicatorProps & {};
 function CheckboxIndicator({ className, ...props }: CheckboxIndicatorProps) {
   return <Indicator className='grid place-content-center text-current' data-slot='checkbox-indicator' {...props} />;
 }
@@ -43,7 +42,7 @@ function CheckboxRoot({ className, color = 'primary', ...props }: CheckboxRootPr
 }
 
 // Checkbox
-type CheckboxProps = CheckboxRootProps;
+type CheckboxProps = CheckboxRootProps & {};
 function Checkbox({ className, ...props }: CheckboxProps) {
   return (
     <CheckboxRoot {...props}>

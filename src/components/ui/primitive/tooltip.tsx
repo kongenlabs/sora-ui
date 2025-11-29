@@ -1,24 +1,20 @@
-import {
-  Content,
-  Portal,
-  Provider,
-  type TooltipContentProps as RadixTooltipContentProps,
-  type TooltipProps as RadixTooltipProps,
-  type TooltipProviderProps as RadixTooltipProviderProps,
-  type TooltipTriggerProps as RadixTooltipTriggerProps,
-  Root,
-  Trigger,
+import type {
+  TooltipContentProps as RadixTooltipContentProps,
+  TooltipProps as RadixTooltipProps,
+  TooltipProviderProps as RadixTooltipProviderProps,
+  TooltipTriggerProps as RadixTooltipTriggerProps,
 } from '@radix-ui/react-tooltip';
+import { Content, Portal, Provider, Root, Trigger } from '@radix-ui/react-tooltip';
 import { cx } from 'class-variance-authority';
 
 // Tooltip Provider
-type TooltipProviderProps = RadixTooltipProviderProps;
+type TooltipProviderProps = RadixTooltipProviderProps & {};
 function TooltipProvider({ ...props }: TooltipProviderProps) {
   return <Provider data-slot='tooltip-provider' {...props} />;
 }
 
 // Tooltip
-type TooltipProps = RadixTooltipProps;
+type TooltipProps = RadixTooltipProps & {};
 function Tooltip({ ...props }: TooltipProps) {
   return (
     <TooltipProvider>
@@ -28,7 +24,7 @@ function Tooltip({ ...props }: TooltipProps) {
 }
 
 // Tooltip Trigger
-type TooltipTriggerProps = RadixTooltipTriggerProps;
+type TooltipTriggerProps = RadixTooltipTriggerProps & {};
 function TooltipTrigger({ ...props }: TooltipTriggerProps) {
   return <Trigger data-slot='tooltip-trigger' {...props} />;
 }
@@ -44,7 +40,7 @@ const tooltipContentStyles = cx(
   'before:-translate-x-1/2 before:-translate-y-1/3 before:absolute before:top-full before:left-1/2 before:size-2.5 before:rotate-45 before:border-r-2 before:border-b-2 before:bg-background',
 );
 
-type TooltipContentProps = RadixTooltipContentProps;
+type TooltipContentProps = RadixTooltipContentProps & {};
 function TooltipContent({ className, children, color = 'primary', ...props }: TooltipContentProps) {
   return (
     <Portal>

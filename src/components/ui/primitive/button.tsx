@@ -1,14 +1,8 @@
 import { cx } from 'class-variance-authority';
 import type { ComponentProps } from 'react';
 import type { Color } from '../types';
-import {
-  Tooltip,
-  TooltipContent,
-  type TooltipContentProps,
-  type TooltipProps,
-  TooltipTrigger,
-  type TooltipTriggerProps,
-} from './tooltip';
+import type { TooltipContentProps, TooltipProps, TooltipTriggerProps } from './tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from './tooltip';
 
 const buttonStyles = cx(
   '-translate-y-1 relative inline-flex h-fit shrink-0 cursor-pointer items-center justify-center whitespace-nowrap border-2 font-medium leading-none shadow-sm transition-all duration-150',

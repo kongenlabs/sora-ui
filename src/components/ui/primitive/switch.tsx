@@ -1,9 +1,8 @@
-import {
-  type SwitchProps as RadixSwitchProps,
-  type SwitchThumbProps as RadixSwitchThumbProps,
-  Root,
-  Thumb,
+import type {
+  SwitchProps as RadixSwitchProps,
+  SwitchThumbProps as RadixSwitchThumbProps,
 } from '@radix-ui/react-switch';
+import { Root, Thumb } from '@radix-ui/react-switch';
 import { cx } from 'class-variance-authority';
 import type { ComponentProps, ReactNode } from 'react';
 import type { Color } from '../types';
@@ -38,15 +37,9 @@ const switchThumbStyles = cx(
   // Tertiary
   'group-data-[color=tertiary]:border-tertiary-border group-data-[color=tertiary]:shadow-tertiary-shadow group-data-[color=tertiary]:bg-tertiary',
 );
-type SwitchThumbProps = RadixSwitchThumbProps & {
-  children?: ReactNode;
-};
-function SwitchThumb({ className, children, ...props }: SwitchThumbProps) {
-  return (
-    <Thumb className={cx(switchThumbStyles, className)} data-slot='switch-thumb' {...props}>
-      {children}
-    </Thumb>
-  );
+type SwitchThumbProps = RadixSwitchThumbProps;
+function SwitchThumb({ className, ...props }: SwitchThumbProps) {
+  return <Thumb className={cx(switchThumbStyles, className)} data-slot='switch-thumb' {...props} />;
 }
 
 // Switch Labels

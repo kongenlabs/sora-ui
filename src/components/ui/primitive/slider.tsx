@@ -1,13 +1,10 @@
-import {
-  type SliderProps as RadixSliderProps,
-  type SliderRangeProps as RadixSliderRangeProps,
-  type SliderThumbProps as RadixSliderThumbProps,
-  type SliderTrackProps as RadixSliderTrackProps,
-  Range,
-  Root,
-  Thumb,
-  Track,
+import type {
+  SliderProps as RadixSliderProps,
+  SliderRangeProps as RadixSliderRangeProps,
+  SliderThumbProps as RadixSliderThumbProps,
+  SliderTrackProps as RadixSliderTrackProps,
 } from '@radix-ui/react-slider';
+import { Range, Root, Thumb, Track } from '@radix-ui/react-slider';
 import { cx } from 'class-variance-authority';
 import type { Color } from '../types';
 
@@ -39,7 +36,7 @@ const sliderTrackStyles = cx(
   // Tertiary color
   'group-data-[color=tertiary]:border-tertiary-border group-data-[color=tertiary]:bg-tertiary-container',
 );
-type SliderTrackProps = RadixSliderTrackProps;
+type SliderTrackProps = RadixSliderTrackProps & {};
 function SliderTrack({ className, ...props }: SliderTrackProps) {
   return <Track className={cx(sliderTrackStyles, className)} data-slot='slider-track' {...props} />;
 }
@@ -59,7 +56,7 @@ const sliderRangeStyles = cx(
   // Tertiary color
   'group-data-[color=tertiary]:bg-tertiary',
 );
-type SliderRangeProps = RadixSliderRangeProps;
+type SliderRangeProps = RadixSliderRangeProps & {};
 function SliderRange({ className, ...props }: SliderRangeProps) {
   return <Range className={cx(sliderRangeStyles, className)} data-slot='slider-range' {...props} />;
 }
@@ -81,13 +78,13 @@ const sliderThumbStyles = cx(
   'group-data-[color=tertiary]:border-tertiary-border group-data-[color=tertiary]:bg-tertiary group-data-[color=tertiary]:shadow-tertiary-shadow',
   'group-data-[color=tertiary]:focus-visible:outline-tertiary-border/60',
 );
-type SliderThumbProps = RadixSliderThumbProps;
+type SliderThumbProps = RadixSliderThumbProps & {};
 function SliderThumb({ className, ...props }: SliderThumbProps) {
   return <Thumb className={cx(sliderThumbStyles, className)} data-slot='slider-thumb' {...props} />;
 }
 
 // Slider
-type SliderProps = SliderRootProps;
+type SliderProps = SliderRootProps & {};
 function Slider({ className, ...props }: SliderProps) {
   return (
     <SliderRoot {...props}>

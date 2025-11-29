@@ -1,11 +1,9 @@
-import {
-  Indicator,
-  Item,
-  type RadioGroupIndicatorProps as RadixRadioGroupIndicatorProps,
-  type RadioGroupItemProps as RadixRadioGroupItemProps,
-  type RadioGroupProps as RadixRadioGroupProps,
-  Root,
+import type {
+  RadioGroupIndicatorProps as RadixRadioGroupIndicatorProps,
+  RadioGroupItemProps as RadixRadioGroupItemProps,
+  RadioGroupProps as RadixRadioGroupProps,
 } from '@radix-ui/react-radio-group';
+import { Indicator, Item, Root } from '@radix-ui/react-radio-group';
 import { cx } from 'class-variance-authority';
 import { CircleIcon } from 'lucide-react';
 import type { Color } from '../types';
@@ -19,7 +17,7 @@ function RadioGroupRoot({ className, color = 'primary', ...props }: RadioGroupRo
 }
 
 // Radio Group Indicator
-type RadioGroupIndicatorProps = RadixRadioGroupIndicatorProps;
+type RadioGroupIndicatorProps = RadixRadioGroupIndicatorProps & {};
 function RadioGroupIndicator({ className, ...props }: RadioGroupIndicatorProps) {
   return (
     <Indicator className={cx('grid place-content-center', className)} data-slot='radio-group-indicator' {...props} />
@@ -49,7 +47,7 @@ const radioGroupItemStyles = cx(
   'group-data-[color=tertiary]:focus-visible:outline-tertiary-border/60',
   'group-data-[color=tertiary]:data-[state=checked]:border-tertiary-border',
 );
-type RadioGroupItemProps = RadixRadioGroupItemProps;
+type RadioGroupItemProps = RadixRadioGroupItemProps & {};
 function RadioGroupItem({ className, children, ...props }: RadioGroupItemProps) {
   if (children)
     return (
@@ -59,7 +57,7 @@ function RadioGroupItem({ className, children, ...props }: RadioGroupItemProps) 
     );
 }
 
-type RadioGroupItemWithIndicatorProps = RadioGroupItemProps;
+type RadioGroupItemWithIndicatorProps = RadioGroupItemProps & {};
 function RadioGroupItemWithIndicator({ className, children, ...props }: RadioGroupItemWithIndicatorProps) {
   return (
     <RadioGroupItem {...props}>
