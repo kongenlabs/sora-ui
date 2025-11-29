@@ -16,7 +16,7 @@ export default function RootLayout({
     <html className={cx(noto.variable, roboto.variable)} lang='en' suppressHydrationWarning>
       <body className={cx('scroll-smooth bg-background text-foreground antialiased')}>
         <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-          {children}
+          <div className='h-screen w-screen'>{children}</div>
         </ThemeProvider>
       </body>
     </html>
