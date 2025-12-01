@@ -2,7 +2,7 @@ import type {
   SwitchProps as RadixSwitchProps,
   SwitchThumbProps as RadixSwitchThumbProps,
 } from '@radix-ui/react-switch';
-import { Root, Thumb } from '@radix-ui/react-switch';
+import { Root as RadixSwitchRoot, SwitchThumb as RadixSwitchThumb } from '@radix-ui/react-switch';
 import { cx } from 'class-variance-authority';
 import type { ComponentProps, ReactNode } from 'react';
 import type { Color } from '../types';
@@ -11,7 +11,7 @@ import type { Color } from '../types';
 type SwitchThumbProps = RadixSwitchThumbProps;
 function SwitchThumb({ className, ...props }: SwitchThumbProps) {
   return (
-    <Thumb
+    <RadixSwitchThumb
       className={cx(
         'absolute block rounded-xs border-2 bg-background shadow-sm ring-0 transition-all duration-150',
 
@@ -117,7 +117,7 @@ type SwitchRootProps = RadixSwitchProps & {
 
 function SwitchRoot({ className, color = 'primary', variant = 'pilled', ...props }: SwitchRootProps) {
   return (
-    <Root
+    <RadixSwitchRoot
       className={cx(
         'peer group relative inline-flex shrink-0 cursor-pointer items-center rounded-full border-2 transition-all',
         'disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none',

@@ -2,7 +2,7 @@ import { cx } from 'class-variance-authority';
 import type { ComponentProps } from 'react';
 import type { Color } from '../types';
 import type { TooltipContentProps, TooltipProps, TooltipTriggerProps } from './tooltip';
-import { Tooltip, TooltipContent, TooltipTrigger } from './tooltip';
+import { Tooltip, TooltipContent, TooltipPortal, TooltipProvider, TooltipTrigger } from './tooltip';
 
 type ButtonProps = ComponentProps<'button'> & {
   color?: Color;
@@ -73,12 +73,16 @@ function Button({
   if (!tooltip) return button;
 
   return (
-    <Tooltip delayDuration={100} {...tooltipOptions}>
-      <TooltipTrigger asChild {...tooltipTriggerOptions}>
-        {button}
-      </TooltipTrigger>
-      <TooltipContent {...tooltipContentOptions}>{tooltip}</TooltipContent>
-    </Tooltip>
+    <TooltipProvider>
+      <Tooltip delayDuration={100} {...tooltipOptions}>
+        <TooltipTrigger asChild {...tooltipTriggerOptions}>
+          {button}
+        </TooltipTrigger>
+        <TooltipPortal>
+          <TooltipContent {...tooltipContentOptions}>{tooltip}</TooltipContent>
+        </TooltipPortal>
+      </Tooltip>
+    </TooltipProvider>
   );
 }
 

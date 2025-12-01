@@ -4,7 +4,12 @@ import type {
   SliderThumbProps as RadixSliderThumbProps,
   SliderTrackProps as RadixSliderTrackProps,
 } from '@radix-ui/react-slider';
-import { Range, Root, Thumb, Track } from '@radix-ui/react-slider';
+import {
+  Slider as RadixSlider,
+  SliderRange as RadixSliderRange,
+  SliderThumb as RadixSliderThumb,
+  SliderTrack as RadixSliderTrack,
+} from '@radix-ui/react-slider';
 import { cx } from 'class-variance-authority';
 import type { Color } from '../types';
 
@@ -14,7 +19,7 @@ type SliderRootProps = RadixSliderProps & {
 };
 function SliderRoot({ className, color = 'primary', ...props }: SliderRootProps) {
   return (
-    <Root
+    <RadixSlider
       className={cx(
         'group relative flex w-full touch-none select-none items-center',
         'data-disabled:opacity-50',
@@ -32,7 +37,7 @@ function SliderRoot({ className, color = 'primary', ...props }: SliderRootProps)
 type SliderTrackProps = RadixSliderTrackProps & {};
 function SliderTrack({ className, ...props }: SliderTrackProps) {
   return (
-    <Track
+    <RadixSliderTrack
       className={cx(
         'relative grow overflow-hidden rounded-full border-2 bg-background transition-colors duration-150',
         'data-[orientation=horizontal]:h-2 data-[orientation=horizontal]:w-full',
@@ -58,7 +63,7 @@ function SliderTrack({ className, ...props }: SliderTrackProps) {
 type SliderRangeProps = RadixSliderRangeProps & {};
 function SliderRange({ className, ...props }: SliderRangeProps) {
   return (
-    <Range
+    <RadixSliderRange
       className={cx(
         'absolute transition-colors duration-150',
         'data-[orientation=horizontal]:h-full',
@@ -84,7 +89,7 @@ function SliderRange({ className, ...props }: SliderRangeProps) {
 type SliderThumbProps = RadixSliderThumbProps & {};
 function SliderThumb({ className, ...props }: SliderThumbProps) {
   return (
-    <Thumb
+    <RadixSliderThumb
       className={cx(
         '-translate-y-1 block size-4 shrink-0 cursor-pointer rounded-full border-2 shadow-sm transition-transform duration-150',
         'focus-visible:outline-3',
@@ -121,5 +126,5 @@ function Slider({ className, ...props }: SliderProps) {
   );
 }
 
-export { Slider, SliderRange, SliderThumb, SliderTrack };
-export type { SliderProps, SliderRangeProps, SliderThumbProps, SliderTrackProps };
+export { Slider, SliderRange, SliderThumb, SliderTrack, SliderRoot };
+export type { SliderProps, SliderRangeProps, SliderThumbProps, SliderTrackProps, SliderRootProps };

@@ -6,22 +6,29 @@ import type {
   AccordionSingleProps as RadixAccordionSingleProps,
   AccordionTriggerProps as RadixAccordionTriggerProps,
 } from '@radix-ui/react-accordion';
-import { Content, Header, Item, Root, Trigger } from '@radix-ui/react-accordion';
+import {
+  Accordion as RadixAccordion,
+  AccordionContent as RadixAccordionContent,
+  AccordionHeader as RadixAccordionHeader,
+  AccordionItem as RadixAccordionItem,
+  AccordionTrigger as RadixAccordionTrigger,
+} from '@radix-ui/react-accordion';
 import { cx } from 'class-variance-authority';
 import { ChevronDownIcon } from 'lucide-react';
 import type { Color } from '../types';
-import { Strong } from './typography';
 
 // Accordion
 type AccordionProps = (RadixAccordionSingleProps | RadixAccordionMultipleProps) & { color?: Color };
 function Accordion({ className, children, color = 'primary', ...props }: AccordionProps) {
   return (
-    <Root
+    <RadixAccordion
       className={cx(
-        'group w-full overflow-hidden rounded border-2',
+        'group w-full overflow-hidden rounded border-2 shadow-sm',
         'data-[color=primary]:border-primary-border data-[color=primary]:shadow-primary-shadow',
         'data-[color=secondary]:border-secondary-border data-[color=secondary]:shadow-secondary-shadow',
         'data-[color=tertiary]:border-tertiary-border data-[color=tertiary]:shadow-tertiary-shadow',
+        'has-[[data-slot=accordion-item][data-state=open]:last-child]:shadow-none has-[[data-slot=accordion-item][data-state=open]:last-child]:delay-25',
+        'has-[[data-slot=accordion-item][data-state=closed]:last-child]:shadow-sm has-[[data-slot=accordion-item][data-state=closed]:last-child]:delay-175',
         className,
       )}
       data-color={color}
@@ -29,7 +36,7 @@ function Accordion({ className, children, color = 'primary', ...props }: Accordi
       {...props}
     >
       {children}
-    </Root>
+    </RadixAccordion>
   );
 }
 
@@ -37,7 +44,7 @@ function Accordion({ className, children, color = 'primary', ...props }: Accordi
 type AccordionItemProps = RadixAccordionItemProps & {};
 function AccordionItem({ className, ...props }: AccordionItemProps) {
   return (
-    <Item
+    <RadixAccordionItem
       className={cx(
         'border-b-2',
         'last:border-b-0',
@@ -56,7 +63,7 @@ function AccordionItem({ className, ...props }: AccordionItemProps) {
 type AccordionHeaderProps = RadixAccordionHeaderProps & {};
 function AccordionHeader({ className, ...props }: AccordionHeaderProps) {
   return (
-    <Header
+    <RadixAccordionHeader
       className={cx(
         'relative flex border-b-2 shadow-sm',
         'data-[state=closed]:border-b-0 data-[state=closed]:delay-200',
@@ -75,7 +82,7 @@ function AccordionHeader({ className, ...props }: AccordionHeaderProps) {
 type AccordionTriggerProps = RadixAccordionTriggerProps & {};
 function AccordionTrigger({ className, children, ...props }: AccordionTriggerProps) {
   return (
-    <Trigger
+    <RadixAccordionTrigger
       className={cx(
         'flex flex-1 cursor-pointer justify-between gap-4 p-4 transition-all',
         'group-data-[color=primary]:bg-primary group-data-[color=primary]:text-on-primary',
@@ -90,9 +97,9 @@ function AccordionTrigger({ className, children, ...props }: AccordionTriggerPro
       data-slot='accordion-trigger'
       {...props}
     >
-      <Strong>{children}</Strong>
+      {children}
       <ChevronDownIcon className='pointer-events-none size-6 shrink-0 translate-y-0.5 transition-transform duration-200' />
-    </Trigger>
+    </RadixAccordionTrigger>
   );
 }
 
@@ -100,7 +107,7 @@ function AccordionTrigger({ className, children, ...props }: AccordionTriggerPro
 type AccordionContentProps = RadixAccordionContentProps & {};
 function AccordionContent({ className, children, ...props }: AccordionContentProps) {
   return (
-    <Content
+    <RadixAccordionContent
       className={cx(
         'overflow-hidden',
         'group-data-[color=primary]:bg-primary-container group-data-[color=primary]:text-on-primary-container',
@@ -114,7 +121,7 @@ function AccordionContent({ className, children, ...props }: AccordionContentPro
       {...props}
     >
       <div className='p-4'>{children}</div>
-    </Content>
+    </RadixAccordionContent>
   );
 }
 

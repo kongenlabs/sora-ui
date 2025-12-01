@@ -5,7 +5,6 @@ import type { Color } from '../types';
 type TextareaProps = ComponentProps<'textarea'> & {
   color?: Color;
 };
-
 function Textarea({ className, color = 'primary', ...props }: TextareaProps) {
   return (
     <textarea
