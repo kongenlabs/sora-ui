@@ -25,6 +25,7 @@ function H1({ className, variant = 'default', color, ...props }: H1Props) {
         className,
       )}
       data-color={color}
+      data-slot='h1'
       data-variant={variant}
       {...props}
     />
@@ -47,6 +48,7 @@ function H2({ className, variant = 'default', color, ...props }: H2Props) {
         className,
       )}
       data-color={color}
+      data-slot='h2'
       data-variant={variant}
       {...props}
     />
@@ -69,6 +71,7 @@ function H3({ className, variant = 'default', color, ...props }: H3Props) {
         className,
       )}
       data-color={color}
+      data-slot='h3'
       data-variant={variant}
       {...props}
     />
@@ -91,6 +94,7 @@ function H4({ className, variant = 'default', color, ...props }: H4Props) {
         className,
       )}
       data-color={color}
+      data-slot='h4'
       data-variant={variant}
       {...props}
     />
@@ -113,6 +117,7 @@ function H5({ className, variant = 'default', color, ...props }: H5Props) {
         className,
       )}
       data-color={color}
+      data-slot='h5'
       data-variant={variant}
       {...props}
     />
@@ -135,6 +140,7 @@ function H6({ className, variant = 'default', color, ...props }: H6Props) {
         className,
       )}
       data-color={color}
+      data-slot='h6'
       data-variant={variant}
       {...props}
     />
@@ -157,6 +163,7 @@ function Paragraph({ className, variant = 'default', color, ...props }: Paragrap
         className,
       )}
       data-color={color}
+      data-slot='p'
       data-variant={variant}
       {...props}
     />
@@ -180,6 +187,7 @@ function A({ className, variant = 'default', color, ...props }: AProps) {
         className,
       )}
       data-color={color}
+      data-slot='a'
       data-variant={variant}
       {...props}
     />
@@ -202,6 +210,7 @@ function Strong({ className, variant = 'default', color, ...props }: StrongProps
         className,
       )}
       data-color={color}
+      data-slot='strong'
       data-variant={variant}
       {...props}
     />
@@ -224,6 +233,7 @@ function Emphasis({ className, variant = 'default', color, ...props }: EmphasisP
         className,
       )}
       data-color={color}
+      data-slot='em'
       data-variant={variant}
       {...props}
     />
@@ -246,6 +256,7 @@ function Small({ className, variant = 'default', color, ...props }: SmallProps) 
         className,
       )}
       data-color={color}
+      data-slot='small'
       data-variant={variant}
       {...props}
     />
@@ -268,6 +279,7 @@ function Blockquote({ className, variant = 'default', color, ...props }: Blockqu
         className,
       )}
       data-color={color}
+      data-slot='blockquote'
       data-variant={variant}
       {...props}
     />
@@ -290,6 +302,7 @@ function Pre({ className, variant = 'default', color, ...props }: PreProps) {
         className,
       )}
       data-color={color}
+      data-slot='pre'
       data-variant={variant}
       {...props}
     />
@@ -312,6 +325,7 @@ function Code({ className, variant = 'default', color, ...props }: CodeProps) {
         className,
       )}
       data-color={color}
+      data-slot='code'
       data-variant={variant}
       {...props}
     />
@@ -334,6 +348,7 @@ function Kbd({ className, variant = 'default', color, ...props }: KbdProps) {
         className,
       )}
       data-color={color}
+      data-slot='kbd'
       data-variant={variant}
       {...props}
     />
@@ -356,6 +371,7 @@ function Figcaption({ className, variant = 'default', color, ...props }: Figcapt
         className,
       )}
       data-color={color}
+      data-slot='figcaption'
       data-variant={variant}
       {...props}
     />

@@ -1,5 +1,7 @@
 @theme {
   --animate-tick: tick 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
 
   @keyframes tick {
     from {
@@ -10,6 +12,24 @@
     to {
       stroke-dasharray: 1000;
       stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
     }
   }
 }

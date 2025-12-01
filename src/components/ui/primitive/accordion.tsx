@@ -14,11 +14,11 @@ import { Strong } from './typography';
 
 // Accordion
 type AccordionProps = (RadixAccordionSingleProps | RadixAccordionMultipleProps) & { color?: Color };
-function Accordion({ className, color = 'primary', ...props }: AccordionProps) {
+function Accordion({ className, children, color = 'primary', ...props }: AccordionProps) {
   return (
     <Root
       className={cx(
-        'group overflow-hidden rounded border-2 shadow-sm',
+        'group w-full overflow-hidden rounded border-2',
         'data-[color=primary]:border-primary-border data-[color=primary]:shadow-primary-shadow',
         'data-[color=secondary]:border-secondary-border data-[color=secondary]:shadow-secondary-shadow',
         'data-[color=tertiary]:border-tertiary-border data-[color=tertiary]:shadow-tertiary-shadow',
@@ -27,7 +27,9 @@ function Accordion({ className, color = 'primary', ...props }: AccordionProps) {
       data-color={color}
       data-slot='accordion'
       {...props}
-    />
+    >
+      {children}
+    </Root>
   );
 }
 
@@ -37,7 +39,8 @@ function AccordionItem({ className, ...props }: AccordionItemProps) {
   return (
     <Item
       className={cx(
-        'not-last:border-b-2',
+        'border-b-2',
+        'last:border-b-0',
         'group-data-[color=primary]:border-primary-border',
         'group-data-[color=secondary]:border-secondary-border',
         'group-data-[color=tertiary]:border-tertiary-border',
@@ -56,6 +59,7 @@ function AccordionHeader({ className, ...props }: AccordionHeaderProps) {
     <Header
       className={cx(
         'relative flex border-b-2 shadow-sm',
+        'data-[state=closed]:border-b-0 data-[state=closed]:delay-200',
         'group-data-[color=primary]:border-primary-border group-data-[color=primary]:shadow-primary-shadow',
         'group-data-[color=secondary]:border-secondary-border group-data-[color=secondary]:shadow-secondary-shadow',
         'group-data-[color=tertiary]:border-tertiary-border group-data-[color=tertiary]:shadow-tertiary-shadow',
@@ -73,7 +77,7 @@ function AccordionTrigger({ className, children, ...props }: AccordionTriggerPro
   return (
     <Trigger
       className={cx(
-        'flex flex-1 cursor-pointer justify-between gap-4 p-4',
+        'flex flex-1 cursor-pointer justify-between gap-4 p-4 transition-all',
         'group-data-[color=primary]:bg-primary group-data-[color=primary]:text-on-primary',
         'group-data-[color=secondary]:bg-secondary group-data-[color=secondary]:text-on-secondary',
         'group-data-[color=tertiary]:bg-tertiary group-data-[color=tertiary]:text-on-tertiary',
@@ -87,7 +91,7 @@ function AccordionTrigger({ className, children, ...props }: AccordionTriggerPro
       {...props}
     >
       <Strong>{children}</Strong>
-      <ChevronDownIcon className='pointer-events-none size-6 shrink-0 translate-y-0.5 transition-transform duration-150' />
+      <ChevronDownIcon className='pointer-events-none size-6 shrink-0 translate-y-0.5 transition-transform duration-200' />
     </Trigger>
   );
 }
@@ -98,7 +102,7 @@ function AccordionContent({ className, children, ...props }: AccordionContentPro
   return (
     <Content
       className={cx(
-        'p-4',
+        'overflow-hidden',
         'group-data-[color=primary]:bg-primary-container group-data-[color=primary]:text-on-primary-container',
         'group-data-[color=secondary]:bg-secondary-container group-data-[color=secondary]:text-on-secondary-container',
         'group-data-[color=tertiary]:bg-tertiary-container group-data-[color=tertiary]:text-on-tertiary-container',
@@ -109,7 +113,7 @@ function AccordionContent({ className, children, ...props }: AccordionContentPro
       data-slot='accordion-content'
       {...props}
     >
-      {children}
+      <div className='p-4'>{children}</div>
     </Content>
   );
 }

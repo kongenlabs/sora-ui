@@ -8,7 +8,7 @@ import { A } from '@/components/ui/primitive/typography';
 
 const HEADER_NAVIGATION_LINKS = [
   {
-    href: '/docs',
+    href: '/documentation',
     label: 'Documentation',
   },
   {

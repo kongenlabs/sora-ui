@@ -13,32 +13,41 @@ function CheckboxIndicator({ className, ...props }: CheckboxIndicatorProps) {
 }
 
 // Checkbox Root
-const checkboxRootStyles = cx(
-  'peer cursor-pointer size-6 shrink-0 rounded-2xs border-2 shadow-xs transition-all duration-150 -translate-y-0.75',
-  'disabled:pointer-events-none disabled:shadow-none disabled:opacity-50',
-  'active:-translate-y-0.25 active:shadow-none',
-  'focus-visible:outline-3',
-
-  // Primary color
-  'data-[color=primary]:border-primary-border data-[color=primary]:shadow-primary-shadow data-[color=primary]:bg-primary-container',
-  'data-[color=primary]:focus-visible:outline-primary-border/60',
-  'data-[color=primary]:data-[state=checked]:border-primary-border data-[color=primary]:data-[state=checked]:bg-primary data-[color=primary]:data-[state=checked]:text-on-primary',
-
-  // Secondary color
-  'data-[color=secondary]:border-secondary-border data-[color=secondary]:shadow-secondary-shadow data-[color=secondary]:bg-secondary-container',
-  'data-[color=secondary]:focus-visible:outline-secondary-border/60',
-  'data-[color=secondary]:data-[state=checked]:border-secondary-border data-[color=secondary]:data-[state=checked]:bg-secondary data-[color=secondary]:data-[state=checked]:text-on-secondary',
-
-  // Tertiary color
-  'data-[color=tertiary]:border-tertiary-border data-[color=tertiary]:shadow-tertiary-shadow data-[color=tertiary]:bg-tertiary-container',
-  'data-[color=tertiary]:focus-visible:outline-tertiary-border/60',
-  'data-[color=tertiary]:data-[state=checked]:border-tertiary-border data-[color=tertiary]:data-[state=checked]:bg-tertiary data-[color=tertiary]:data-[state=checked]:text-on-tertiary',
-);
 type CheckboxRootProps = RadixCheckboxProps & {
   color?: Color;
 };
 function CheckboxRoot({ className, color = 'primary', ...props }: CheckboxRootProps) {
-  return <Root className={cx(checkboxRootStyles, className)} data-color={color} data-slot='checkbox' {...props} />;
+  return (
+    <Root
+      className={cx(
+        'peer -translate-y-1 size-6 shrink-0 cursor-pointer rounded-xs border-2 shadow-sm transition-all duration-150',
+        'disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none',
+        'active:translate-y-0 active:shadow-none',
+        'focus-visible:outline-3',
+        'data-[state=checked]:-translate-y-0.5 data-[state=checked]:shadow-xs',
+        'data-[state=checked]:active:translate-y-0 data-[state=checked]:active:shadow-none',
+
+        // Primary color
+        'data-[color=primary]:border-primary-border data-[color=primary]:bg-primary-container data-[color=primary]:shadow-primary-shadow',
+        'data-[color=primary]:focus-visible:outline-primary-border/60',
+        'data-[color=primary]:data-[state=checked]:border-primary-border data-[color=primary]:data-[state=checked]:bg-primary data-[color=primary]:data-[state=checked]:text-on-primary',
+
+        // Secondary color
+        'data-[color=secondary]:border-secondary-border data-[color=secondary]:bg-secondary-container data-[color=secondary]:shadow-secondary-shadow',
+        'data-[color=secondary]:focus-visible:outline-secondary-border/60',
+        'data-[color=secondary]:data-[state=checked]:border-secondary-border data-[color=secondary]:data-[state=checked]:bg-secondary data-[color=secondary]:data-[state=checked]:text-on-secondary',
+
+        // Tertiary color
+        'data-[color=tertiary]:border-tertiary-border data-[color=tertiary]:bg-tertiary-container data-[color=tertiary]:shadow-tertiary-shadow',
+        'data-[color=tertiary]:focus-visible:outline-tertiary-border/60',
+        'data-[color=tertiary]:data-[state=checked]:border-tertiary-border data-[color=tertiary]:data-[state=checked]:bg-tertiary data-[color=tertiary]:data-[state=checked]:text-on-tertiary',
+        className,
+      )}
+      data-color={color}
+      data-slot='checkbox'
+      {...props}
+    />
+  );
 }
 
 // Checkbox

@@ -1,10 +1,11 @@
 @theme {
   --radius-offset: 0.125rem;
-  --radius: 0.75rem;
+
   --radius-3xs: calc(var(--radius) - var(--radius-offset) * 4);
   --radius-2xs: calc(var(--radius) - var(--radius-offset) * 3);
   --radius-xs: calc(var(--radius) - var(--radius-offset) * 2);
   --radius-sm: calc(var(--radius) - var(--radius-offset));
+  --radius: 0.75rem;
   --radius-lg: calc(var(--radius) + var(--radius-offset));
   --radius-xl: calc(var(--radius) + var(--radius-offset) * 2);
   --radius-2xl: calc(var(--radius) + var(--radius-offset) * 3);
